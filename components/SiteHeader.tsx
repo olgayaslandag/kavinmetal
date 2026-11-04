@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { navLinks } from "@/data/content";
+import ModelSelector from "@/components/ModelSelector";
 
 
 // Üst menü: scroll'da .scrolled, mobilde açılır menü
@@ -66,6 +67,7 @@ export default function SiteHeader() {
           <button className="language" aria-label="Dil seçimi" type="button">
             TR <ChevronDown size={14} />
           </button>
+          <ModelSelector />
         </nav>
       </div>
     </header>

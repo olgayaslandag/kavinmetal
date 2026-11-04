@@ -576,6 +576,28 @@ img{transition:filter .4s ease}
 }
 .preloader__pct{font-variant-numeric:tabular-nums;letter-spacing:.1em;color:#fff}
 
+/* ---------- Model seçici ---------- */
+.model-select{display:inline-block;position:relative}
+.model-select-trigger{
+  font-size:0.85rem;font-weight:600;color:var(--navy);
+  border:1px solid var(--line);background:rgba(255,255,255,.9);
+  padding:0.45rem 0.8rem;border-radius:0.5rem;cursor:pointer;
+  display:flex;align-items:center;gap:0.4rem;font-family:inherit;
+}
+.site-header:not(.scrolled) .model-select-trigger{color:#fff;border-color:rgba(255,255,255,.4);background:rgba(255,255,255,.15)}
+.model-select-menu{
+  position:absolute;top:100%;left:0;right:0;margin-top:0.4rem;
+  background:#fff;border:1px solid var(--line);border-radius:0.5rem;
+  box-shadow:0 1rem 2rem rgba(20,40,68,.12);z-index:50;overflow:hidden;
+  display:flex;flex-direction:column;
+}
+.model-option{
+  width:100%;padding:0.5rem 0.8rem;border:0;background:none;
+  color:var(--navy);font-size:0.85rem;font-weight:500;cursor:pointer;
+  text-align:left;font-family:inherit;
+}
+.model-option:hover{background:var(--soft);color:var(--blue)}
+.model-option.active{background:var(--blue);color:#fff}
 /* ---------- Responsive ---------- */
 .desktop-only{display:inline}
 @media(max-width:62rem){

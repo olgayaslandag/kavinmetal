@@ -1,6 +1,6 @@
 ---
 description: Tüm PHP, Logic, DB, API ve Mimari kararlar
-mode: primary
+mode: subagent
 ---
 # Senior Backend Architect
 
