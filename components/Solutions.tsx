@@ -22,9 +22,6 @@ export default function Solutions() {
               ediyoruz.
             </p>
           </div>
-          <a className="text-link" href="/iletisim">
-            TÜM ÇÖZÜMLER <ArrowRight size={16} />
-          </a>
         </div>
         <div className="product-wrap">
           <div className="product-grid">
