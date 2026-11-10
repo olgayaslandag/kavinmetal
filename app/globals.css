@@ -91,6 +91,15 @@ img{max-width:100%}
 .breadcrumb__item+.breadcrumb__item::before{content:"•";color:var(--muted);margin:0 .5rem}
 .breadcrumb__link{color:var(--muted);text-decoration:none}
 .breadcrumb__link:hover{color:var(--blue)}
+.sub-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;perspective:1100px}
+@media(max-width:36rem){.sub-grid{grid-template-columns:1fr}}
+.page-hero .breadcrumb{--muted:rgba(255,255,255,.7)}
+.page-hero .breadcrumb__link{color:rgba(255,255,255,.7)}
+.page-hero .breadcrumb__link:hover{color:#bef264}
+.page-hero .breadcrumb__item+.breadcrumb__item::before{content:"•";color:rgba(255,255,255,.4)}
+.page-hero .breadcrumb[aria-current="page"]{color:#fff}
+/* card body small: PDF etiket ipucu */
+.card-body small{color:var(--muted);font-size:.8rem}
 
 /* ---------- Legal Body ---------- */
 .legal-body{color:var(--muted);font-size:.9rem;line-height:1.6}
@@ -288,6 +297,87 @@ img{max-width:100%}
   color:var(--muted);font-size:1rem;line-height:1.6;margin:0;
   display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;
 }
+/* ---------- Service detail rich content ---------- */
+.service-steps{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:1.5rem
+}
+.service-step{
+  background:var(--soft);
+  border:1px solid var(--line);
+  border-radius:.75rem;
+  padding:1.5rem;
+  display:flex;
+  flex-direction:column;
+  gap:.6rem
+}
+.service-step__num{
+  font-size:1.6rem;
+  font-weight:800;
+  color:var(--blue);
+  line-height:1
+}
+.service-step h3{
+  font-size:1rem;
+  font-weight:700;
+  margin:0;
+  color:var(--navy)
+}
+.service-step p{
+  color:var(--muted);
+  font-size:.9rem;
+  line-height:1.6;
+  margin:0
+}
+.service-features{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:1.5rem
+}
+.service-feature{
+  border:1px solid var(--line);
+  border-radius:.75rem;
+  padding:1.5rem;
+  display:flex;
+  flex-direction:column;
+  gap:.5rem;
+  background:#fff
+}
+.service-feature h3{
+  margin:0;
+  font-size:1rem;
+  font-weight:700;
+  color:var(--navy)
+}
+.service-feature p{
+  margin:0;
+  color:var(--muted);
+  font-size:.9rem;
+  line-height:1.6
+}
+.service-cta{
+  text-align:center;background:radial-gradient(ellipse at 30% 20%,rgba(132,204,22,.14),transparent 50%),linear-gradient(160deg,#0b1526,#142844 60%,#0b1526);color:#fff
+}
+.service-cta .eyebrow{color:#bef264}
+.service-cta h2{color:#fff;font-size:2.2rem;margin:0}
+.service-cta .section-desc{color:rgba(255,255,255,.85);max-width:46rem;margin-inline:auto}
+.service-cta .btn-primary{
+  display:inline-flex;
+  margin-top:1.5rem
+}
+/* Responsive: 2 колон at 64rem, 1 kolon at 48rem */
+@media(max-width:64rem){
+  .service-steps,.service-features{
+    grid-template-columns:repeat(2,1fr)
+  }
+}
+@media(max-width:48rem){
+  .service-steps,.service-features{
+    grid-template-columns:1fr
+  }
+}
+/* ---------- Services / Projects ---------- */
 .project-wrap{position:relative;--project-bleed:max(1.5rem, calc((100vw - 1320px) / 2 + 1.5rem))}
 .product-wrap,.service-wrap{position:relative}
 /* ---------- Projeler carousel ---------- */
