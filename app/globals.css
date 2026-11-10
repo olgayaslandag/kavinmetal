@@ -55,7 +55,7 @@ img{max-width:100%}
 .brand{display:inline-flex;align-items:center;flex-shrink:0;color:#5c6268;text-decoration:none;font-weight:700}
 .brand-logo{display:block;height:3rem;width:auto}
 .site-header .brand-logo-dark{display:none}
-.site-header .brand-logo-light{display:block;width:200px;height:auto;margin-left:-1rem}
+.site-header .brand-logo-light{display:block;width:200px;height:auto}
 .site-header.scrolled .brand-logo-dark{display:block;width:200px;height:auto;margin-left:-1rem;position:relative;top:-0.4rem}
 .site-header.scrolled .brand-logo-light{display:none}
 .main-nav{display:flex;align-items:center;gap:1.5rem}
