@@ -105,20 +105,20 @@ export default function Preloader() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
              src="/assets/img/logo_white.png"
-            alt="KAVIN"
-            width={220}
-            height={120}
-            draggable={false}
-          />
-        </span>
-        <span className="preloader__bar" aria-hidden="true">
-          <span
-            className="preloader__bar-fill"
-            style={{ width: `${progress}%` }}
-          />
-        </span>
-        <span className="preloader__meta">
-          <span className="preloader__name">KAVIN</span>
+alt="Kavin Metal"
+             width={220}
+             height={120}
+             draggable={false}
+           />
+         </span>
+         <span className="preloader__bar" aria-hidden="true">
+           <span
+             className="preloader__bar-fill"
+             style={{ width: `${progress}%` }}
+           />
+         </span>
+         <span className="preloader__meta">
+           <span className="preloader__name">Kavin Metal</span>
           <span className="preloader__pct">{progress}%</span>
         </span>
       </div>

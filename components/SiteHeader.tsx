@@ -1,10 +1,10 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { navLinks } from "@/data/content";
-import ModelSelector from "@/components/ModelSelector";
 
 
 // Üst menü: scroll'da .scrolled, mobilde açılır menü
@@ -25,11 +25,11 @@ export default function SiteHeader() {
       className={`site-header${scrolled ? " scrolled" : ""}`}
     >
       <div className="container header-inner">
-        <a className="brand" href="#top" aria-label="KAVIN ana sayfa">
+        <a className="brand" href="/" aria-label="Kavin Metal ana sayfa">
           <Image
             className="brand-logo brand-logo-dark"
             src="/assets/img/logo_original.png"
-            alt="KAVIN"
+            alt="Kavin Metal"
             width={180}
             height={48}
             priority
@@ -37,7 +37,7 @@ export default function SiteHeader() {
            <Image
              className="brand-logo brand-logo-light"
              src="/assets/img/logo_white.png"
-             alt="Kayra Metal"
+             alt="Kavin Metal"
              width={180}
              height={48}
              priority
@@ -60,14 +60,13 @@ export default function SiteHeader() {
           className={`main-nav${open ? " open" : ""}`}
         >
           {navLinks.map((link) => (
-            <a key={link.label} href={link.href} onClick={() => setOpen(false)}>
+            <Link key={link.label} href={link.href} onClick={() => setOpen(false)}>
               {link.label}
-            </a>
+            </Link>
           ))}
           <button className="language" aria-label="Dil seçimi" type="button">
             TR <ChevronDown size={14} />
           </button>
-          <ModelSelector />
         </nav>
       </div>
     </header>

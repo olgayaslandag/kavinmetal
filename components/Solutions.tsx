@@ -1,4 +1,5 @@
 import { ArrowRight, ArrowUpRight } from "lucide-react";
+import Link from "next/link";
 import { products } from "@/data/content";
 import CarouselControls from "./CarouselControls";
 
@@ -16,19 +17,19 @@ export default function Solutions() {
             <p className="eyebrow">ÇÖZÜMLER</p>
             <h2 id="solutions-title">Fonksiyonel ve kaliteli çözümler</h2>
             <p className="section-desc">
-              KAVIN A.Ş. olarak değişen müşteri ihtiyaçlarına fonksiyonel
+              Kavin Metal A.Ş. olarak değişen müşteri ihtiyaçlarına fonksiyonel
               ve kaliteli ürünler sunuyor, güvenilir çözüm ortağı olmaya devam
               ediyoruz.
             </p>
           </div>
-          <a className="text-link" href="#contact">
+          <a className="text-link" href="/iletisim">
             TÜM ÇÖZÜMLER <ArrowRight size={16} />
           </a>
         </div>
         <div className="product-wrap">
           <div className="product-grid">
             {products.map((product, i) => (
-              <a
+              <Link
                 key={product.alt}
                 className="product-card reveal"
                 data-reveal="deal"
@@ -57,7 +58,7 @@ export default function Solutions() {
                     ))}
                   </h3>
                 </div>
-              </a>
+              </Link>
             ))}
           </div>
           <CarouselControls
@@ -65,6 +66,23 @@ export default function Solutions() {
             label="Çözüm navigasyonu"
             itemCount={products.length}
           />
+        </div>
+        <div className="amanos-banner">
+          <div className="section-heading-left">
+            <p className="eyebrow">MİMARİ ÇÖZÜMLER</p>
+            <h2>Amanos System</h2>
+            <p className="section-desc">
+              Mimari çözümler için Amanos web sitemizi ziyaret edebilirsiniz.
+            </p>
+          </div>
+          <a
+            className="text-link"
+            href="http://amanossystem.com"
+            target="_blank"
+            rel="noopener"
+          >
+            AMANOS SYSTEM <ArrowUpRight size={16} />
+          </a>
         </div>
       </div>
     </section>

@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Rubik } from "next/font/google";
+import SiteHeader from "@/components/SiteHeader";
+import SiteFooter from "@/components/SiteFooter";
 import Preloader from "@/components/Preloader";
 import "./globals.css";
 
@@ -11,14 +13,16 @@ const rubik = Rubik({
 });
 
 export const metadata: Metadata = {
-  title: "KAVIN | Üretiyoruz. Güven inşa ediyoruz.",
+  title: "Kavin Metal | Mimari çözümleriniz için",
   description:
-    "KAVIN, yapı sektörüne güvenilir alüminyum çözümleri sunar.",
+    "Kavin Metal A.Ş., alüminyum profiller, küpeşte sistemleri, kompozit paneller ve aksesuarlarla mimari çözümler sunar. Yüzey işlemleri, mekanik işlemler ve proje hizmetleriyle güvenilir çözüm ortağınız.",
   // Site amblemi: kavinmetal.com site ikonu yerelleştirildi
   icons: {
-    icon: "/assets/img/kayra-amblem.png",
+    icon: "/assets/img/kavin-amblem.png",
   },
 };
+
+import RevealEffects from "@/components/RevealEffects";
 
 export default function RootLayout({
   children,
@@ -28,8 +32,12 @@ export default function RootLayout({
   return (
     <html lang="tr">
       <body className={rubik.className}>
-        <Preloader />
-        {children}
+        <SiteHeader />
+        <main id="top">
+          {children}
+        </main>
+        <SiteFooter />
+        <RevealEffects />
       </body>
     </html>
   );

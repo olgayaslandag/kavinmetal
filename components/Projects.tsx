@@ -1,4 +1,5 @@
 import { ArrowRight, ArrowUpRight } from "lucide-react";
+import Link from "next/link";
 import { projects } from "@/data/content";
 import CarouselControls from "./CarouselControls";
 
@@ -22,7 +23,7 @@ export default function Projects() {
               dışındaki birçok nitelikli projeye ürün ve hizmet sunuyoruz.
             </p>
           </div>
-          <a className="text-link" href="#contact">
+          <a className="text-link" href="/projeler">
             TÜM PROJELER <ArrowRight size={16} />
           </a>
         </div>
@@ -36,7 +37,7 @@ export default function Projects() {
           >
             <div className="project-grid">
               {projects.map((project, i) => (
-                <a
+                <Link
                   key={project.title}
                   className="project-card reveal"
                   data-reveal="deal"
@@ -56,8 +57,8 @@ export default function Projects() {
                     </span>
                   </div>
                   <strong>{project.title}</strong>
-                </a>
-              ))}
+</Link>
+            ))}
             </div>
           </div>
           <CarouselControls

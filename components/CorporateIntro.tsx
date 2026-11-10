@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Plus } from "lucide-react";
-import { corporateAccordion, corporateFacts } from "@/data/content";
+import { corporateAccordion, corporateFacts, aboutText, visionMission } from "@/data/content";
 
 // Sayı animasyonu: `start` gelince 0'dan hedefe sayar ("23K+" → 23 + "K+")
 // Başlatma kararı ebeveyndeki tek observer'a ait — her sayı kendi dar
@@ -71,12 +71,12 @@ export default function CorporateIntro() {
         <div
           className="corporate-intro__visuals reveal"
           data-reveal="left"
-          aria-label="KAVIN üretim ve mimari uygulamaları"
+          aria-label="Kavin Metal üretim ve mimari uygulamaları"
         >
           <figure className="corporate-photo corporate-photo-main">
             <img
               src="/assets/img/services/toz-boya-2.jpg"
-              alt="KAVIN elektrostatik toz boya tesisi"
+              alt="Kavin Metal elektrostatik toz boya tesisi"
               loading="lazy"
               decoding="async"
             />
@@ -84,13 +84,14 @@ export default function CorporateIntro() {
         </div>
         <div className="corporate-intro__statement reveal" data-reveal="right">
           <p className="eyebrow">KURUMSAL</p>
-          <h2 id="corporate-title">Metali hassasiyetle işliyor, güvene dönüştürüyoruz.</h2>
+          <h2 id="corporate-title">Mimari çözümleriniz için</h2>
           <p className="section-desc">
-            2006&apos;dan bu yana alüminyum profil, aksesuar ve kompozit panel
-            çözümlerimizle yapı sektörünün ihtiyaçlarına değer katıyoruz.
-             Yüksek hacimli stok, hızlı tedarik gücümüz ve KAVIN
-             markamızla yurt içi ve yurt dışında yüzlerce projede güvenilir
-             üretim ortağı olmaya devam ediyoruz.
+            {aboutText[0]} {aboutText[1]}
+          </p>
+          <p className="section-desc" style={{ marginTop: "1rem" }}>
+            Yüksek hacimli stok, hızlı tedarik gücümüz ve {visionMission.vision.toLowerCase()}{" "}
+            vizyonuyla yurt içi ve yurt dışında yüzlerce projede güvenilir
+            çözüm ortağı olmaya devam ediyoruz.
           </p>
           <div className="corporate-intro__details">
             <div className="corporate-intro__content">

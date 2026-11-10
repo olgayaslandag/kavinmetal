@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { heroSlides, HERO_AUTOPLAY_MS } from "@/data/content";
@@ -76,9 +77,9 @@ export default function Hero() {
           <span className="rule hero-anim" aria-hidden="true" style={{ ["--d" as string]: "0.34s" }} />
           <p className="lead hero-anim" style={{ ["--d" as string]: "0.46s" }}>{slide.lead}</p>
           <span className="hero-anim hero-cta" style={{ ["--d" as string]: "0.6s" }}>
-            <a className="btn btn-sm btn-primary" href="#corporate">
-              HAKKIMIZDA <ArrowRight size={16} />
-            </a>
+            <Link className="btn btn-sm btn-primary" href="/cozumler">
+              ÇÖZÜMLERİMİZ <ArrowRight size={16} />
+            </Link>
           </span>
         </div>
         <div className="hero-side hero-anim" style={{ ["--d" as string]: "0.7s" }}>
@@ -120,7 +121,7 @@ export default function Hero() {
       <div className="hero-progress" aria-hidden="true">
         <span key={active} className="hero-progress__bar" style={{ ["--hero-ms" as string]: `${HERO_AUTOPLAY_MS}ms` }} />
       </div>
-      <a className="hero-scroll" href="#corporate" aria-label="Aşağı kaydır">
+      <a className="hero-scroll" href="/cozumler" aria-label="Aşağı kaydır">
         <span className="hero-scroll__mouse"><span className="hero-scroll__wheel" /></span>
         <span className="hero-scroll__text">KEŞFET</span>
       </a>

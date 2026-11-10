@@ -1,4 +1,5 @@
 import { referenceLogos } from "@/data/references";
+import Link from "next/link";
 
 // Referans logo duvarı: sonsuz kayan şerit (marquee)
 // İkinci kopya aria-hidden — ekran okuyucu logoları bir kez okur
@@ -12,12 +13,12 @@ export default function ReferencesCarousel() {
       <div className="container">
         <div className="section-heading reveal" data-reveal="up">
           <div className="section-heading-left">
-            <p className="eyebrow">REFERANSLAR</p>
-            <h2 id="references-title">Bize güvenen markalar</h2>
+            <p className="eyebrow">Kavin'i Tercih Etken</p>
+            <h2 id="references-title">Güçlü şirketler</h2>
           </div>
-          <a className="text-link" href="#">
+          <Link href="/projeler">
             TÜM REFERANSLAR
-          </a>
+          </Link>
         </div>
       </div>
       <div className="refs-viewport reveal" data-reveal="blur" data-delay="150">

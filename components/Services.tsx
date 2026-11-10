@@ -1,4 +1,5 @@
 import { ArrowRight, ArrowUpRight } from "lucide-react";
+import Link from "next/link";
 import { services } from "@/data/content";
 import CarouselControls from "./CarouselControls";
 
@@ -20,14 +21,14 @@ export default function Services() {
               ile güçlü projeler oluşturuyoruz.
             </p>
           </div>
-          <a className="text-link" href="#contact">
+          <a className="text-link" href="/iletisim">
             TÜM HİZMETLER <ArrowRight size={16} />
           </a>
         </div>
         <div className="service-wrap">
           <div className="service-grid">
             {services.map((service, i) => (
-              <a
+              <Link
                 key={service.title}
                 className="service-card reveal"
                 data-reveal="deal"
@@ -50,7 +51,7 @@ export default function Services() {
                   <h3>{service.title}</h3>
                   <p>{service.description}</p>
                 </div>
-              </a>
+              </Link>
             ))}
           </div>
           <CarouselControls

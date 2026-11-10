@@ -1,15 +1,17 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import {
   ArrowUp,
+  Facebook,
   Instagram,
   Linkedin,
   Mail,
   MessageCircle,
   Phone,
-  Youtube,
 } from "lucide-react";
+import { contactInfo } from "@/data/content";
 
 // Alt bilgi: kurumsal linkler + adres + iletişim + yukarı dön
 export default function SiteFooter() {
@@ -32,34 +34,33 @@ export default function SiteFooter() {
   return (
     <footer id="contact" role="contentinfo">
       <div className="container footer-grid">
-        <div className="reveal" data-reveal="up" data-delay="0">
+<div className="reveal" data-reveal="up" data-delay="0">
           <h3>KURUMSAL</h3>
-          <a href="#corporate">Hakkımızda</a>
-          <a href="#corporate">Vizyon &amp; Misyon</a>
-          <a href="#corporate">Kalite Politikamız</a>
-          <a href="#corporate">Sürdürülebilirlik</a>
-          <a href="#corporate">Kariyer</a>
+          <Link href="/hakkimizda">Hakkımızda</Link>
+          <Link href="/hakkimizda">Vizyon & Misyon</Link>
+          <Link href="/hakkimizda">Tarihçemiz</Link>
+          <Link href="/projeler">Referanslar</Link>
         </div>
         <div className="reveal" data-reveal="up" data-delay="80">
           <h3>ÜRÜNLER</h3>
-          <a href="#solutions">Alüminyum Profiller</a>
-          <a href="#solutions">Aksesuarlar</a>
-          <a href="#solutions">Kompozit Paneller</a>
-          <a href="#solutions">Kupeste Profilleri</a>
+          <Link href="/cozumler/aluminyum-profiller">Alüminum Profiller</Link>
+          <Link href="/cozumler/aksesuarlar">Aksesuarlar</Link>
+          <Link href="/cozumler/kompozit-paneller">Kompozit Paneller</Link>
+          <Link href="/cozumler/kupeste-profilleri">Kupeste Profilleri</Link>
         </div>
         <div className="reveal" data-reveal="up" data-delay="160">
           <h3>HİZMETLER</h3>
-          <a href="#services">Yüzey İşlemleri</a>
-          <a href="#services">Mekanik İşlemler</a>
-          <a href="#services">İzomat</a>
-          <a href="#services">Proje Hizmetleri</a>
+          <Link href="/hizmetler/yuzey-islemleri">Yüzey İşlemleri</Link>
+          <Link href="/hizmetler/mekanik-islemler">Mekanik İşlemler</Link>
+          <Link href="/hizmetler/izomat">İzomat</Link>
+          <Link href="/hizmetler/proje-hizmetleri">Proje Hizmetleri</Link>
         </div>
         <div className="reveal" data-reveal="up" data-delay="240">
           <h3>ADRESLERİMİZ</h3>
           <p className="contact-line">
             <span>
-              <strong>Merkez:</strong> Akçaburgaz, 592. Sk No:14/1, PK34522
-              Esenyurt / İstanbul
+              <strong>Merkez:</strong> Yenibosna Merkez Mah. Kavak Sk. No:4-E,
+              34197 Bahçelievler / İstanbul
             </span>
           </p>
           <p className="contact-line">
@@ -74,25 +75,25 @@ export default function SiteFooter() {
           <p className="contact-line">
             <Mail aria-hidden="true" />{" "}
             <a
-              href="mailto:info@kavinmetal.com"
+              href={`mailto:${contactInfo.email}`}
               style={{ color: "inherit", textDecoration: "none" }}
             >
-              info@kavinmetal.com
+              {contactInfo.email}
             </a>
           </p>
           <p className="contact-line">
             <Phone aria-hidden="true" />{" "}
             <a
-              href="tel:+902124520050"
+              href={contactInfo.phoneHref}
               style={{ color: "inherit", textDecoration: "none" }}
             >
-              0(212) 452 00 50
+              {contactInfo.phone}
             </a>
           </p>
           <p className="contact-line">
             <MessageCircle aria-hidden="true" />{" "}
             <a
-              href="https://wa.link/fwl04l"
+              href={contactInfo.whatsapp}
               target="_blank"
               rel="noopener"
               style={{ color: "inherit", textDecoration: "none" }}
@@ -102,7 +103,7 @@ export default function SiteFooter() {
           </p>
           <div className="socials">
             <a
-              href="https://www.linkedin.com/company/kavin-metal-san-tic-ltd-ti/"
+              href={contactInfo.socials.linkedin}
               target="_blank"
               rel="noopener"
               aria-label="LinkedIn"
@@ -110,7 +111,7 @@ export default function SiteFooter() {
               <Linkedin />
             </a>
             <a
-              href="http://instagram.com/kavinmetal"
+              href={contactInfo.socials.instagram}
               target="_blank"
               rel="noopener"
               aria-label="Instagram"
@@ -118,25 +119,25 @@ export default function SiteFooter() {
               <Instagram />
             </a>
             <a
-              href="https://www.facebook.com/Kavinmetal/?locale=tr_TR"
+              href={contactInfo.socials.facebook}
               target="_blank"
               rel="noopener"
               aria-label="Facebook"
             >
-              <Youtube />
+              <Facebook />
             </a>
-            <a href="mailto:info@kavinmetal.com" aria-label="E-posta">
+            <a href={`mailto:${contactInfo.email}`} aria-label="E-posta">
               <Mail />
             </a>
           </div>
         </div>
       </div>
       <div className="container footer-bottom">
-        <span>© 2024 KAVIN A.Ş. Tüm hakları saklıdır.</span>
+        <span>© 2023 Kavin Metal A.Ş. Tüm hakları saklıdır.</span>
         <div>
-          <a href="#">KVKK</a>
-          <a href="#">Gizlilik Politikası</a>
-          <a href="#">Kullanım Şartları</a>
+          <a href="/kvkk">KVKK</a>
+          <a href="/gizlilik-politikasi">Gizlilik Politikası</a>
+          <a href="/kullanim-sartlari">Kullanım Şartları</a>
         </div>
         <button
           className="back-top"

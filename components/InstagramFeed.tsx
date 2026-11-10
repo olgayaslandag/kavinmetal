@@ -51,7 +51,7 @@ export default function InstagramFeed() {
         <div className="section-heading">
           <div className="section-heading-left">
             <p className="eyebrow">SOSYAL MEDYA</p>
-            <h2 id="instagram-title">Instagram&apos;da KAVIN</h2>
+            <h2 id="instagram-title">Instagram'da Kavin Metal</h2>
             <p className="section-desc">
               Üretimden, projelerden ve fabrika yaşamından güncel kareler
               için bizi takip edin.
@@ -63,13 +63,13 @@ export default function InstagramFeed() {
             target="_blank"
             rel="noopener"
           >
-            @KAVINMETAL <ArrowRight size={16} />
+            @kavinmetal <ArrowRight size={16} />
           </a>
         </div>
 
         <div className="insta-grid" aria-live="polite">
           {loading
-            ? Array.from({ length: 4 }).map((_, i) => (
+            ? Array.from({ length: 12 }).map((_, i) => (
                 <div
                   key={`skeleton-${i}`}
                   className="insta-card insta-skeleton"
@@ -81,7 +81,7 @@ export default function InstagramFeed() {
                   key={post.id}
                   className="insta-card reveal"
                   data-reveal="deal"
-                  style={{ ["--reveal-delay" as string]: `${(i % 4) * 140}ms` }}
+                  style={{ ["--reveal-delay" as string]: `${(i % 12) * 140}ms` }}
                   href={post.permalink}
                   target="_blank"
                   rel="noopener"
@@ -90,7 +90,7 @@ export default function InstagramFeed() {
                   <div className="insta-image">
                     <img
                       src={post.image}
-                      alt={post.caption.slice(0, 120) || "KAVIN Instagram gönderisi"}
+                      alt={post.caption.slice(0, 120) || "Kavin Metal Instagram gönderisi"}
                       loading="lazy"
                       decoding="async"
                     />
