@@ -1,7 +1,6 @@
 import Link from "next/link";
-import Image from "next/image";
 import { products, productSubGroups } from "@/data/content";
-import CarouselControls from "@/components/CarouselControls";
+import { notFound } from "next/navigation";
 import PageHero from "@/components/PageHero";
 
 // Dynamic product page: [slug] sayfası - server component
@@ -18,65 +17,96 @@ export default function CozumlerDetailPage({
   );
 
   if (!product) {
-    return (
-      <div className="max-w-2xl mx-auto py-12 text-center">
-        <h1 className="text-2xl font-bold text-navy mb-4">Ürün Bulunamadı</h1>
-        <p className="text-muted">İstenilen ürün grubu mevcut değil.</p>
-        <a href="/cozumler" className="btn btn-primary mt-4">Ürün Gruplarına Dön</a>
-      </div>
-    );
+    notFound();
   }
+
+  // Slug'a göre title (PageHero, h2, breadcrumb için)
+  const title = product.title.join(" ");
 
   // Slug'a göre alt grupları bul
   const subGroups = productSubGroups.filter(
     (sg) => sg.parentHref === `/cozumler/${slug}`
   );
 
+  // Diğer ürünler (mevcut hariç)
+  const otherProducts = products.filter(
+    (p) => p.href !== `/cozumler/${slug}`
+  );
+
   return (
-    <section
-      className="section solutions"
-      id="solutions"
-      aria-labelledby="solutions-title"
-    >
-      <div className="container">
-        <div className="section-heading">
-          <div className="section-heading-left">
-            <p className="eyebrow">ÇÖZÜMLER</p>
-            <h2 id="solutions-title">
-              {product.title.map((line) => (
-                <span key={line}>{line}</span>
+    <>
+      <PageHero
+        eyebrow="ÇÖZÜM PORTFÖYÜ"
+        title={title}
+        lead={product.description}
+        breadcrumbs={[
+          { label: "Ana Sayfa", href: "/" },
+          { label: "Çözümler", href: "/cozumler" },
+          { label: title },
+        ]}
+      />
+      <section className="section solutions" aria-labelledby="subgroups-title">
+        <div className="container">
+          <div className="section-heading">
+            <div className="section-heading-left">
+              <p className="eyebrow">ALT GRUPLAR</p>
+              <h2 id="subgroups-title">
+                {title} Alt Grupları
+              </h2>
+            </div>
+          </div>
+          <div className="sub-groups">
+            <div className="sub-grid">
+              {subGroups.map((sg, i) => (
+                <a
+                  key={sg.title}
+                  href={`/assets/pdf/${sg.pdf}`}
+                  target="_blank"
+                  rel="noopener"
+                  className="product-card reveal"
+                  data-reveal="deal"
+                  data-delay={i * 140}
+                  aria-label={sg.title}
+                >
+                  <div className="card-image">
+                    <img
+                      src={sg.image}
+                      alt={sg.alt}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <div className="card-body">
+                    <h3>{sg.title}</h3>
+                    <small>Katalog PDF</small>
+                  </div>
+                </a>
               ))}
-            </h2>
-            <p className="section-desc">
-              {product.description}
-            </p>
-            <a className="text-link" href="/iletisim">
-              TÜM ÇÖZÜMLER <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="arrow-right-icon h-4 w-4"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-              >
-                <path d="M5 12h14M12 5l7 7-7 7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </a>
+            </div>
           </div>
         </div>
-        <div className="product-wrap">
+      </section>
+      <section className="section" aria-labelledby="other-solutions-title">
+        <div className="container">
+          <div className="section-heading">
+            <div className="section-heading-left">
+              <h2 id="other-solutions-title">Diğer Çözüm Grupları</h2>
+            </div>
+          </div>
           <div className="product-grid">
-            {products.map((product, i) => (
+            {otherProducts.map((p, i) => (
               <Link
-                key={product.alt}
-                href={product.href}
+                key={p.alt}
+                href={p.href}
                 className="product-card reveal"
                 data-reveal="deal"
                 data-delay={i * 140}
-                aria-label={product.alt}
+                aria-label={p.alt}
               >
                 <div className="card-image">
                   <img
-                    src={product.image}
-                    alt={product.alt}
+                    src={p.image}
+                    alt={p.alt}
                     loading="lazy"
                     decoding="async"
                   />
@@ -93,10 +123,10 @@ export default function CozumlerDetailPage({
                 </div>
                 <div className="card-body">
                   <h3>
-                    {product.title.map((line, i) => (
+                    {p.title.map((line, i) => (
                       <span key={line}>
                         {line}
-                        {i < product.title.length - 1 && <br />}
+                        {i < p.title.length - 1 && <br />}
                       </span>
                     ))}
                   </h3>
@@ -104,58 +134,40 @@ export default function CozumlerDetailPage({
               </Link>
             ))}
           </div>
-
-          {/* Alt grup kartları */}
-          {subGroups.length > 0 && (
-            <div className="sub-groups reveal" data-reveal="deal" data-delay="200">
-              <h3 className="text-xl font-medium text-gray-900 mb-4">
-                {product.parentTitle || product.title.map((t) => t)[0]} Alt Grupları
-              </h3>
-              <div className="sub-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {subGroups.map((sg, i) => (
-                  <div
-                    key={sg.title}
-                    className="sub-card group-border rounded overflow-hidden hover:shadow-lg transition-shadow"
-                  >
-                    <img
-                      src={sg.image}
-                      alt={sg.alt}
-                      loading="lazy"
-                      decoding="async"
-                      className="w-full h-48 object-cover"
-                    />
-                    <div className="p-4">
-                      <h4 className="font-medium text-gray-900 line-clamp-2">
-                        {sg.title}
-                      </h4>
-                      <p className="text-sm text-muted line-clamp-2">
-                        {sg.alt}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-
-          <CarouselControls
-            targetSelector=".product-grid"
-            label="Çözüm navigasyonu"
-            itemCount={products.length}
-          />
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }
 
-// Static params for dynamic route - 4 solution slugs
+// Generate SEO metadata for the detail page
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  // Slug'a göre ürün grubunu bul
+  const product = products.find(
+    (p) => p.href === `/cozumler/${params.slug}`
+  );
+
+  if (!product) {
+    notFound();
+  }
+
+  const title = product.title.join(" ");
+
+  return {
+    title: `${title} | Kavin Metal`,
+    description:
+      product.description.length > 155
+        ? product.description.substring(0, 155) + "..."
+        : product.description,
+  };
+}
+
+// Static params for static export - slugs from products
 export const generateStaticParams = async () => {
-  const slugs = [
-    "aluminyum-profiller",
-    "kupeste-profilleri",
-    "kompozit-paneller",
-    "aksesuarlar",
-  ];
+  const slugs = products.map((p) => p.href.split("/").pop());
   return slugs.map((slug) => ({ slug }));
 };
