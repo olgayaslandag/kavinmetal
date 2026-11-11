@@ -1,117 +1,147 @@
 import PageHero from "@/components/PageHero";
 import { contactInfo } from "@/data/content";
+import { MapPin, Phone, Facebook, Instagram, Linkedin, MessageCircle, Mail } from "lucide-react";
+
+// MAP_EMBED_URL: koordinatlar ile statik embed URI'si
+// goo.gl short link: https://maps.app.goo.gl/mfVgm2rMPvzogNaa9
+// → Google Maps embed: 41.085855,28.6516306 (Bahçeşehir/merkez ofis)
+const MAP_EMBED_URL =
+  "https://www.google.com/maps?q=41.085855,28.6516306&z=16&output=embed";
 
 export default function IletisimPage() {
   return (
     <>
-      <PageHero eyebrow="BİZE ULAŞIN" title="İletişim" lead="Kavin Metal A.Ş. ile iletişime geçin, projelerinizle ilgili tüm sorularınızı yanıtlamak için buradan ulaşabilirsiniz." />
+      <PageHero
+        eyebrow="BİZE ULAŞIN"
+        title="İletişim"
+        lead="Kavin System Solutions ile iletişime geçin, projelerinizle ilgili tüm sorularınızı yanıtlamak için buradan ulaşabilirsiniz."
+      />
       <section className="section">
         <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div>
-              <h2 className="text-2xl font-bold text-navy mb-4">Merkezi Ofis</h2>
-              <p className="text-muted mb-4">
-                {contactInfo.headquarters}
+          <div className="contact-grid">
+            <div className="contact-info">
+              <h2 className="contact-block-title">İletişim Bilgileri</h2>
+
+              {/* Adres satırı - sadece headquarters */}
+              <p className="contact-line">
+                <MapPin aria-hidden="true" /> {contactInfo.headquarters}
               </p>
-              <p className="text-muted mb-4">
-                {contactInfo.factory}
+
+              {/* E-posta */}
+<p className="contact-line">
+                  <Mail aria-hidden="true" className="contact-icon" />{" "}
+                  <a
+                    href={`mailto:${contactInfo.email}`}
+                    style={{ color: "var(--navy)", textDecoration: "none" }}
+                  >
+                    {contactInfo.email}
+                  </a>
+                </p>
+
+              {/* Telefon */}
+              <p className="contact-line">
+                <Phone aria-hidden="true" />{" "}
+                <a
+                  href={contactInfo.phoneHref}
+                  style={{ color: "var(--navy)", textDecoration: "none" }}
+                >
+                  {contactInfo.phone}
+                </a>
               </p>
-              <p className="text-muted">
-                <strong>E-posta:</strong> {contactInfo.email}
-              </p>
-              <p className="text-muted">
-                <strong>Telefon:</strong> {contactInfo.phone}
-              </p>
-              <div className="mt-6">
-                <h3 className="font-bold mb-3">Sosyal Medya</h3>
-                <div className="flex gap-3">
-                  {Object.entries(contactInfo.socials).map(([key, url]) => {
-                    return (
-                      <a
-                        key={key}
-                        href={url}
-                        target="_blank"
-                        rel="noopener"
-                        className="flex items-center gap-2 px-3 py-1 border rounded hover:bg-blue-100"
-                      >
-                        <svg
-                          width={20}
-                          height={20}
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth={2}
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        >
-                          <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3m1 4h6l1 4h4v11H7v4h4v11H7l1 4h15v-4h-3v-8z" />
-                        </svg>
-                        {key}
-                      </a>
-                    );
-                  })}
-                </div>
+
+              {/* Sosyal Medya */}
+              <h3 className="contact-subtitle">Sosyal Medya</h3>
+              <div className="socials">
+                {Object.entries(contactInfo.socials).map(([key, url]) => {
+                  const iconMap: Record<string, React.ComponentType> = {
+                    facebook: Facebook,
+                    instagram: Instagram,
+                    linkedin: Linkedin,
+                    whatsapp: MessageCircle,
+                  };
+                  const labelMap: Record<string, string> = {
+                    facebook: "Facebook",
+                    instagram: "Instagram",
+                    linkedin: "Linkedin",
+                    whatsapp: "WhatsApp",
+                  };
+                  const Icon = iconMap[key as keyof typeof iconMap];
+                  const label = labelMap[key as keyof typeof labelMap];
+                  return (
+                    <a
+                      key={key}
+                      href={url}
+                      target="_blank"
+                      rel="noopener"
+                      aria-label={label}
+                    >
+                      <Icon aria-hidden="true" />
+                    </a>
+                  );
+                })}
               </div>
             </div>
 
-            <div>
-              <h2 className="text-2xl font-bold text-navy mb-4">Proje Yaz Formu</h2>
+            <div className="contact-form">
+              <h2 className="contact-block-title">İletişim formu</h2>
               <form>
-                <div className="mb-4">
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Ad Soyad
-                  </label>
+                <div className="field">
+                  <label htmlFor="cf-name">Ad Soyad</label>
                   <input
                     type="text"
-                    className="mt-1 block w-full rounded border p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    id="cf-name"
+                    name="name"
                     required
                   />
                 </div>
-                <div className="mb-4">
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    E-posta
-                  </label>
-                  <input
-                    type="email"
-                    className="mt-1 block w-full rounded border p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    required
-                  />
+                <div className="field-row">
+                  <div className="field">
+                    <label htmlFor="cf-email">E-posta</label>
+                    <input
+                      type="email"
+                      id="cf-email"
+                      name="email"
+                      required
+                    />
+                  </div>
+                  <div className="field">
+                    <label htmlFor="cf-phone">Telefon</label>
+                    <input
+                      type="tel"
+                      id="cf-phone"
+                      name="tel"
+                      required
+                    />
+                  </div>
                 </div>
-                <div className="mb-4">
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Telefon
-                  </label>
-                  <input
-                    type="tel"
-                    className="mt-1 block w-full rounded border p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
-                </div>
-                <div className="mb-4">
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Konu
-                  </label>
-                  <input
-                    type="text"
-                    className="mt-1 block w-full rounded border p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
-                </div>
-                <div className="mb-4">
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Mesaj
-                  </label>
+                <div className="field">
+                  <label htmlFor="cf-message">Mesaj</label>
                   <textarea
-                    rows={4}
-                    className="mt-1 block w-full rounded border p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    id="cf-message"
+                    name="message"
+                    rows={3}
                     required
                   ></textarea>
                 </div>
-                <button
-                  type="submit"
-                  className="btn btn-primary w-full"
-                >
+                <button type="submit" className="btn-primary">
                   Gönder
                 </button>
               </form>
+            </div>
+          </div>
+
+          {/* Lokasyon harita bölümü - tek harita */}
+          <div style={{ marginTop: "2rem" }}>
+            <div className="contact-maps">
+              <figure>
+                <iframe
+                  title="Merkezi Ofis Haritası"
+                  src={MAP_EMBED_URL}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  allowFullScreen
+                />
+              </figure>
             </div>
           </div>
         </div>

@@ -1,5 +1,7 @@
 "use client";
 
+import { contactInfo } from '../data/content';
+
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import {
@@ -11,9 +13,7 @@ import {
   MessageCircle,
   Phone,
 } from "lucide-react";
-import { contactInfo } from "@/data/content";
 
-// Alt bilgi: kurumsal linkler + adres + iletişim + yukarı dön
 export default function SiteFooter() {
   const [showTop, setShowTop] = useState(false);
 
@@ -34,7 +34,7 @@ export default function SiteFooter() {
   return (
     <footer id="contact" role="contentinfo">
       <div className="container footer-grid">
-<div className="reveal" data-reveal="up" data-delay="0">
+        <div className="reveal" data-reveal="up" data-delay="0">
           <h3>KURUMSAL</h3>
           <Link href="/hakkimizda">Hakkımızda</Link>
           <Link href="/hakkimizda">Vizyon & Misyon</Link>
@@ -65,7 +65,7 @@ export default function SiteFooter() {
           </p>
           <p className="contact-line">
             <span>
-              <strong>Fabrika:</strong> Sarıcaali Küme Evler No:311/1, 39750
+              <strong>Fabrika:</strong> Sarıcaali Küme Evler No:311/ İstiklal 39750
               Lüleburgaz / Kırklareli
             </span>
           </p>
@@ -133,11 +133,11 @@ export default function SiteFooter() {
         </div>
       </div>
       <div className="container footer-bottom">
-        <span>© 2023 Kavin Metal A.Ş. Tüm hakları saklıdır.</span>
+        <span>© 2026 Kavin System Solutions Tüm hakları saklıdır.</span>
         <div>
-          <a href="/kvkk">KVKK</a>
-          <a href="/gizlilik-politikasi">Gizlilik Politikası</a>
-          <a href="/kullanim-sartlari">Kullanım Şartları</a>
+          <Link href="/kvkk">KVKK</Link>
+          <Link href="/gizlilik-politikasi">Gizlilik Politikası</Link>
+          <Link href="/kullanim-sartlari">Kullanım Şartları</Link>
         </div>
         <button
           className="back-top"

@@ -56,12 +56,13 @@ img{max-width:100%}
 .brand-logo{display:block;height:3rem;width:auto}
 .site-header .brand-logo-dark{display:none}
 .site-header .brand-logo-light{display:block;width:200px;height:auto}
-.site-header.scrolled .brand-logo-dark{display:block;width:200px;height:auto;margin-left:-1rem;position:relative;top:-0.4rem}
+.site-header.scrolled .brand-logo-dark{display:block;width:200px;height:auto;position:relative;top:-0.4rem}
 .site-header.scrolled .brand-logo-light{display:none}
 .main-nav{display:flex;align-items:center;gap:1.5rem}
 .main-nav a{
   font-size:0.9rem;font-weight:400;color:var(--navy);
   text-decoration:none;white-space:nowrap;padding:0.5rem 0;position:relative;
+  text-transform:uppercase;
 }
 .main-nav a::after{
   content:'';position:absolute;bottom:0;left:0;width:0;height:2px;
@@ -218,21 +219,11 @@ img{max-width:100%}
   display:inline-flex;align-items:center;gap:0.5rem;color:var(--blue);
   font-size:0.95rem;font-weight:600;text-decoration:none;white-space:nowrap;
 }
-.amanos-banner{
-  display:flex;align-items:center;justify-content:space-between;gap:2rem;
-  background:#fff;border:1px solid var(--line);border-radius:0.75rem;padding:3rem;margin-top:4rem
-}
-@media (max-width:62rem){
-  .amanos-banner{
-    flex-direction:column;align-items:flex-start;padding:2rem
-  }
-}
-
 /* ---------- Corporate ---------- */
 .corporate-intro{position:relative;overflow:hidden;padding:5.5rem 0;background:#fff}
 .corporate-intro__grid{display:grid;grid-template-columns:2fr 3fr;min-height:25rem}
 .corporate-intro__statement{padding:1rem 0 1rem 2rem}
-.corporate-intro__statement h2{max-width:38rem;margin:0;color:var(--navy);font-size:2.2rem;line-height:1.15;font-weight:800}
+.corporate-intro__statement h2{max-width:38rem;margin:0 0 2rem 0;color:var(--navy);font-size:2.2rem;line-height:1.15;font-weight:800}
 .corporate-intro__details{position:relative;display:block;min-height:0;padding:2rem 0 0;color:var(--navy);background:#fff}
 .corporate-intro__content{position:relative;z-index:1}
 .corporate-intro__facts{display:flex;gap:2.5rem}
@@ -377,7 +368,177 @@ img{max-width:100%}
     grid-template-columns:1fr
   }
 }
-/* ---------- Services / Projects ---------- */
+
+/* ---------- Press sayfası stilleri ---------- */
+.press-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1.75rem
+}
+@media(max-width:64rem){
+  .press-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:48rem){
+  .press-grid{grid-template-columns:1fr}
+}
+.press-card{
+  position:relative;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:.75rem;
+  overflow:hidden;
+  transition:.4s
+}
+.press-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 1rem 2rem rgba(14,42,58,.15)
+}
+.press-card__image{
+  position:relative;
+  aspect-ratio:4/3;
+  overflow:hidden
+}
+.press-card__image img{
+  width:100%;
+  height:auto;
+  object-fit:cover;
+  transition:.5s
+}
+.press-card:hover .press-card__image img{
+  transform:scale(1.06)
+}
+.press-card__body{
+  padding:1.5rem 1.75rem 1.75rem
+}
+.press-card__meta{
+  display:flex;
+  align-items:center;
+  gap:.5rem;
+  font-size:.78rem;
+  text-transform:uppercase;
+  color:var(--muted)
+}
+.press-card__badge{
+  position:absolute;
+  top:0.75rem;
+  left:0.75rem;
+  z-index:1;
+  display:inline-flex;
+  align-items:center;
+  justify-content: center;
+  width:2.25rem;
+  height:2.25rem;
+  border-radius:50%;
+  background:rgba(14,42,58,.65);
+  color:#fff;
+  opacity:1;
+  transition:opacity .3s ease
+}
+.press-card h3{
+  font-size:1.15rem;
+  color:var(--navy);
+  line-height:1.3;
+  position:static
+}
+.press-card h3 a{
+  color:var(--navy);
+  text-decoration:none
+}
+.press-card h3 a::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:1
+}
+.press-card__excerpt{
+  display:-webkit-box;
+  -webkit-line-clamp:3;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+  margin-top:.75rem;
+  color:var(--muted);
+  font-size:0.95rem;
+  line-height:1.5
+}
+/* .card-badge,.stretched: removed during press styles update */
+.press-article{
+  max-width:52rem;
+  margin-inline:auto
+}
+.press-meta{
+  margin-bottom:1rem;
+  color:var(--muted);
+  font-size:.9rem
+}
+.press-figure{
+  margin:2rem 0;
+  border-radius:.75rem;
+  overflow:hidden;
+  border:1px solid var(--line)
+}
+.press-figure img{
+  display:block;
+  width:100%;
+  height:auto;
+  object-fit:cover
+}
+.press-q{
+  font-size:1.05rem;
+  font-weight:700;
+  color:var(--navy);
+  margin:2rem 0 .75rem;
+  padding-left:1rem;
+  border-left:3px solid var(--blue)
+}
+.press-body{
+  color:var(--muted);
+  line-height:1.8;
+  margin-bottom:1.1rem;
+  font-size:1rem
+}
+.press-source{
+  margin-top:2rem;
+  padding:1rem 1.25rem;
+  background:var(--soft);
+  border:1px solid var(--line);
+  border-radius:.5rem;
+  font-size:.88rem;
+  color:var(--muted)
+}
+.press-source a{
+  color:var(--blue)
+}
+.press-grid--2{
+  grid-template-columns:repeat(2,1fr)
+}
+@media(max-width:48rem){
+  .press-grid--2{grid-template-columns:1fr}
+}
+/* ---------- Press card -- no image placeholder ---------- */
+.press-card--noimage{
+  background:radial-gradient(ellipse at 30% 20%,rgba(14,42,58,.3),transparent 50%),linear-gradient(160deg,#0b1526,#142844 60%,#0b1526);
+  color:#fff
+}
+.press-card--noimage .press-card__image{
+  height:20rem;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.press-card--noimage .press-card__image::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 30% 20%, rgba(14, 42, 58, .4), transparent 50%);
+}
+.press-card--noimage .card-badge{
+  opacity:1
+}
+.press-card--noimage .press-card__meta,
+.press-card--noimage .press-card__excerpt{
+  display:none
+}
+/* ---------- End press no-image ---------- /* ---------- Services / Projects ---------- */
 .project-wrap{position:relative;--project-bleed:max(1.5rem, calc((100vw - 1320px) / 2 + 1.5rem))}
 .product-wrap,.service-wrap{position:relative}
 /* ---------- Projeler carousel ---------- */
@@ -466,7 +627,25 @@ footer{border-top:1px solid var(--line);padding:5rem 0 2rem;background:var(--sof
 .footer-bottom div{display:flex;flex-wrap:wrap;gap:2rem}
 .footer-bottom a{color:var(--muted);text-decoration:none;line-height:1.6}
 .footer-bottom a:hover{color:var(--blue)}
-.back-top{
+
+/* === İletişim sayfası stilleri (Task: contact page content styling) === */
+.contact-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:3.5rem}
+.contact-block-title{font-size:1.6rem;font-weight:800;color:var(--navy);margin:0 0 1.5rem;line-height:1.2}
+.contact-form .contact-block-title{font-size:1.35rem;margin:0 0 1rem}
+.contact-subtitle{font-size:1.05rem;font-weight:700;color:var(--navy);margin:2.5rem 0 0.75rem}
+.contact-form .field{margin:0 0 0.9rem}
+.contact-form .field-row{display:grid;grid-template-columns:1fr 1fr;gap:0.9rem}
+.contact-form label{display:block;font-size:0.9rem;font-weight:600;color:var(--navy);margin:0 0 0.4rem}
+.contact-form input,.contact-form textarea{display:block;width:100%;padding:0.55rem 0.85rem;border:1px solid var(--line);border-radius:0.25rem;background:#fff;color:var(--navy);font-family:inherit;font-size:1rem;line-height:1.5}
+.contact-form textarea{resize:vertical;min-height:4.5rem}
+.contact-form input:focus,.contact-form textarea:focus{outline:2px solid var(--blue);outline-offset:2px;border-color:var(--blue)}
+.contact-maps{display:grid;gap:2rem}
+.contact-maps figure{margin:0}
+.contact-maps figcaption{font-size:0.85rem;font-weight:700;text-transform:uppercase;color:var(--navy);margin:0 0 0.75rem}
+.contact-maps iframe{display:block;width:100%;height:25rem;border:0;border-radius:0.25rem;background:var(--soft)}
+@media(max-width:62rem){.contact-grid{grid-template-columns:1fr;gap:3rem}.contact-form .field-row{grid-template-columns:1fr}}
+
+/* .footer-bottom a-hover continuation */ .back-top{
   display:inline-flex;align-items:center;justify-content:center;
   width:3rem;height:3rem;border:0;background:var(--blue);color:#fff;
   border-radius:50%;font-size:1.1rem;cursor:pointer;margin-left:auto;
