@@ -1,13 +1,26 @@
+import createNextIntlPlugin from 'next-intl/plugin';
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
   images: {
     remotePatterns: [
       { protocol: "https", hostname: "images.unsplash.com" },
-      { protocol: "https", hostname: "www.amanossystem.com" },
+      
       { protocol: "https", hostname: "i.ytimg.com" },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: "/basinda-biz/:path*",
+        destination: "/haberler/:path*",
+        permanent: false,
+      },
+    ];
+  },
 };
 
-export default nextConfig;
+const withNextIntl = createNextIntlPlugin('./lib/i18n/request.ts');
+
+export default withNextIntl(nextConfig);

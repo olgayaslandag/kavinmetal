@@ -1,0 +1,197 @@
+{
+  "common": {
+    "home": "Ana Sayfa",
+    "solutions": "Çözümler",
+    "services": "Hizmetler",
+    "about": "Hakkımızda",
+    "news": "Haberler",
+    "references": "Referanslar",
+    "contact": "İletişim",
+    "readMore": "Devamını Oku",
+    "learnMore": "Detaylı Bilgi",
+    "viewAll": "Tümünü Görüntle",
+    "contactUs": "Bize Ulaşın",
+    "sendMessage": "Mesaj Gönder",
+    "submit": "Gönder",
+    "cancel": "İptal",
+    "close": "Kapat",
+    "menu": "Menü",
+    "search": "Ara",
+    "filter": "Filtrele",
+    "loading": "Yükleniyor...",
+    "error": "Hata",
+    "success": "Başarılı",
+    "years": "Yıllık",
+    "country": "Ülke",
+    "customers": "Müşteri ve Tedarikçi",
+    "tons": "Ton",
+    "followers": "Takipçi"
+  },
+  "navigation": {
+    "solutions": "Çözümler",
+    "services": "Hizmetler",
+    "about": "Hakkımızda",
+    "news": "Haberler",
+    "references": "Referanslar",
+    "contact": "İletişim"
+  },
+  "hero": {
+    "subtitle": "Kavin System Solutions",
+    "title1": "BÜTÜNLEŞİK PROJE ÇÖZÜMLERİ",
+    "title2": "FARK YARATAN HİZMETLER",
+    "title3": "SICAKTA SERİN SOĞUTA SERİN",
+    "description1": "Değişen müşteri ihtiyaçlarına fonksiyonel ve kaliteli ürünlerle güvenilir çözüm ortağı olmaya devam ediyoruz.",
+    "description2": "Yüzey işlemleri, mekanik işlemler ve size özel imalat çözümleriyle güçlü projeler oluşturuyoruz.",
+    "description3": "Kaliteli ürünler ve hizmetlerle müşterilerinin farklı talepleri karşında esnek ve çözüm odaklı bir yaklaşım sergileyebilmektedir.",
+    "cta1": "Çözümlerimizi Keşfedin",
+    "cta2": "Hizmetlerimizi Keşfedin",
+    "cta3": "Daha Fazla Bilgi"
+  },
+  "solutions": {
+    "title": "Çözümlerimiz",
+    "subtitle": "Kapsamlı alüminyum sistem çözümleri",
+    "aluminiumProfiles": {
+      "title": "Alüminyum Profiller",
+      "description": "Standart profiller, doğrama profilleri, dekorasyon ve tamamlayıcı profiller"
+    },
+    "suspensionSystems": {
+      "title": "Küpeşte Sistemleri",
+      "description": "Yuvarlak sistem, kare ve dikdörtgen profiller, cam kanal küpeşte"
+    },
+    "compositePanels": {
+      "title": "Kompozit Paneller",
+      "description": "3000, 4000 ve 5000 serisi kompozit paneller"
+    },
+    "accessories": {
+      "title": "Aksesuarlar",
+      "description": "Proje için özel donanım grupları, çelik destek sistemleri ve tamamlayıcı aksesuarlar"
+    }
+  },
+  "services": {
+    "title": "Hizmetlerimiz",
+    "subtitle": "Tam kapsamlı hizmet çözümleri",
+    "surfaceTreatment": {
+      "title": "Yüzey İşlemleri",
+      "description": "Elektrostatik toz boya uygulaması"
+    },
+    "mechanicalProcessing": {
+      "title": "Mekanik İşlemler",
+      "description": "CNC işleme ve freze işlemleri"
+    },
+    "izomat": {
+      "title": "İzomat",
+      "description": "Çift testere ile hassas kesim teknolojisi"
+    },
+    "projectService": {
+      "title": "Proje Hizmetleri",
+      "description": "Keşften teslime tek elden proje desteği"
+    }
+  },
+  "projects": {
+    "title": "Referanslarımız",
+    "subtitle": "Referans projelerimiz",
+    "gokturkKonutlari": {
+      "title": "Göktürk Konutları",
+      "description": "WA55 pencere ve kapı sistemleri"
+    },
+    "safiportTicariYapi": {
+      "title": "Safiport Ticari Yapı",
+      "description": "WA55 cephe sistemi"
+    },
+    "akkusTekstil": {
+      "title": "Akkuş Tekstil",
+      "description": "WAT55 cephe uygulaması"
+    },
+    "kemerburgazEvleri": {
+      "title": "Kemerburgaz Evleri",
+      "description": "WAT55 doğrama sistemleri"
+    },
+    "bahcesehirKolejiHalkali": {
+      "title": "Bahçeşehir Koleji Halkalı",
+      "description": "WAT55 sistemleri"
+    }
+  },
+  "about": {
+    "title": "Hakkımızda",
+    "subtitle": "18 yıllık deneyim",
+    "vision": {
+      "title": "Vizyon",
+      "description": "Güven ilkesinden ayrılmadan alüminyum sektörünün tercih edilen çözüm ortağı olmak."
+    },
+    "mission": {
+      "title": "Misyon",
+      "description": "Paydaşlarımızla iş birliği içerinde, değişen müşteri ihtiyaçlarına fonksiyonel ve kaliteli çözümler sunmak."
+    },
+    "experience": "18 Yıllık Deneyim",
+    "export": "49 Ülkeye İhracat Kapasitesi",
+    "customers": "8,950 Farklı Müşteri ve Tedarikçi",
+    "shipments": "23K+ Ton Ürün Sevkiyatı"
+  },
+  "contact": {
+    "title": "İletişim",
+    "subtitle": "Bizimle iletişime geçin",
+    "address": {
+      "headquarters": "Merkez",
+      "factory": "Fabrika",
+      "email": "E-posta",
+      "phone": "Telefon",
+      "whatsapp": "WhatsApp",
+      "maps": "Konum"
+    },
+    "form": {
+      "name": "Ad Soyad",
+      "email": "E-posta",
+      "phone": "Telefon",
+      "subject": "Konu",
+      "message": "Mesaj",
+      "required": "Zorunlu alanlar",
+      "success": "Mesajınız başarıyla gönderildi"
+    }
+  },
+  "footer": {
+    "corporate": "Kurumsal",
+    "about": "Hakkımızda",
+    "visionMission": "Vizyon & Misyon",
+    "history": "Tarihçemiz",
+    "references": "Referanslar",
+    "products": "Ürünler",
+    "aluminiumProfiles": "Alüminyum Profiller",
+    "accessories": "Aksesuarlar",
+    "compositePanels": "Kompozit Paneller",
+    "suspensionSystems": "Küpeşte Sistemleri",
+    "services": "Hizmetler",
+    "surfaceTreatment": "Yüzey İşlemleri",
+    "mechanicalProcessing": "Mekanik İşlemler",
+    "izomatService": "İzomat",
+    "projectService": "Proje Hizmetleri",
+    "address": "Adreslerimiz",
+    "contact": "İletişim",
+    "email": "E-posta",
+    "phone": "Telefon",
+    "whatsapp": "WhatsApp",
+    "socials": "Sosyal Medya",
+    "rights": "© 2023 Kavin System Solutions Tüm hakları saklıdır.",
+    "legal": {
+      "kvkk": "KVKK",
+      "privacy": "Gizlilik Politikası",
+      "terms": "Kullanım Şartları"
+    }
+  },
+  "language": {
+    "turkish": "Türkçe",
+    "english": "İngilizce"
+  },
+  "ui": {
+    "toggleMenu": "Menüyü aç",
+    "closeMenu": "Menüyü kapat",
+    "openMenu": "Menüyü aç",
+    "scrollTop": "Yukarı çık",
+    "close": "Kapat",
+    "expand": "Genişlet",
+    "collapse": "Daralt",
+    "playVideo": "Video oynat",
+    "pauseVideo": "Video duraklat",
+    "mute": "Sessiz",
+    "unmute": "Sesi aç"
+  }
+}

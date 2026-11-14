@@ -26,7 +26,7 @@ const PROFILE_URL = "https://www.instagram.com/kavinmetal/";
 export const fallbackPosts: InstaPost[] = [
   {
     id: "fallback-1",
-    caption: "Elektrostatik toz boya tesisimizden kareler — Kavin Metal kalitesiyle.",
+    caption: "Elektrostatik toz boya tesisimizden kareler — Kavin System Solutions kalitesiyle.",
     image: "/assets/img/services/toz-boya-1.jpg",
     permalink: PROFILE_URL,
     timestamp: "",
@@ -55,7 +55,7 @@ export const fallbackPosts: InstaPost[] = [
   },
   {
     id: "fallback-5",
-    caption: "Proje referansları - Kavin Metal üretim faciliteleri.",
+    caption: "Proje referansları - Kavin System Solutions üretim faciliteleri.",
     image: "/assets/img/projects/gsa130.jpg",
     permalink: PROFILE_URL,
     timestamp: "",
@@ -104,7 +104,7 @@ export const fallbackPosts: InstaPost[] = [
   },
   {
     id: "fallback-12",
-    caption: "Proje referans galerisi - Kavin Metal projeleri.",
+    caption: "Proje referans galerisi - Kavin System Solutions projeleri.",
     image: "/assets/img/projects/Referanslar_0036_47_0011_Akkus-Tekstil_2013_WAT55-1.jpg",
     permalink: PROFILE_URL,
     timestamp: "",

@@ -1,0 +1,197 @@
+{
+  "common": {
+    "home": "Home",
+    "solutions": "Solutions",
+    "services": "Services",
+    "about": "About",
+    "news": "News",
+    "references": "References",
+    "contact": "Contact",
+    "readMore": "Read More",
+    "learnMore": "Learn More",
+    "viewAll": "View All",
+    "contactUs": "Contact Us",
+    "sendMessage": "Send Message",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "close": "Close",
+    "menu": "Menu",
+    "search": "Search",
+    "filter": "Filter",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "years": "Years",
+    "country": "Country",
+    "customers": "Customers",
+    "tons": "Tons",
+    "followers": "Followers"
+  },
+  "navigation": {
+    "solutions": "Solutions",
+    "services": "Services",
+    "about": "About",
+    "news": "News",
+    "references": "References",
+    "contact": "Contact"
+  },
+  "hero": {
+    "subtitle": "Kavin System Solutions",
+    "title1": "COMPLETE PROJECT SOLUTIONS",
+    "title2": "SOLUTIONS THAT MAKE A DIFFERENCE",
+    "title3": "COOL IN HEAT, WARM IN COLD",
+    "description1": "We continue to be a reliable solution partner with functional and quality products for changing customer needs.",
+    "description2": "We create powerful projects with surface treatments, mechanical processes, and custom manufacturing solutions.",
+    "description3": "With quality products and services, you can be flexible and solution-oriented when meeting diverse customer needs.",
+    "cta1": "Explore Solutions",
+    "cta2": "Discover Services",
+    "cta3": "Learn More"
+  },
+  "solutions": {
+    "title": "Our Solutions",
+    "subtitle": "Comprehensive aluminium system solutions",
+    "aluminiumProfiles": {
+      "title": "Aluminium Profiles",
+      "description": "Standard, window, decoration and complementary profiles"
+    },
+    "suspensionSystems": {
+      "title": "Suspension Systems",
+      "description": "Round, square and rectangular, glass channel"
+    },
+    "compositePanels": {
+      "title": "Composite Panels",
+      "description": "3000, quantum and 5000 series"
+    },
+    "accessories": {
+      "title": "Accessories",
+      "description": "Hardware and complementary parts"
+    }
+  },
+  "services": {
+    "title": "Our Services",
+    "subtitle": "Complete solution services",
+    "surfaceTreatment": {
+      "title": "Surface Treatment",
+      "description": "Electrostatic powder coating application"
+    },
+    "mechanicalProcessing": {
+      "title": "Mechanical Processing",
+      "description": "CNC machining and milling"
+    },
+    "izomat": {
+      "title": "Izomat",
+      "description": "Dual saw cutting technology"
+    },
+    "projectService": {
+      "title": "Project Services",
+      "description": "End-to-end project management"
+    }
+  },
+  "projects": {
+    "title": "Our Projects",
+    "subtitle": "Our reference projects",
+    "gokturkKonutlari": {
+      "title": "Göktürk Konutları",
+      "description": "WA55 window and door systems"
+    },
+    "safiportTicariYapi": {
+      "title": "Safiport Commercial Building",
+      "description": "WA55 facade system"
+    },
+    "akkusTekstil": {
+      "title": "Akkuş Tekstil",
+      "description": "WAT55 facade application"
+    },
+    "kemerburgazEvleri": {
+      "title": "Kemerburgaz Evleri",
+      "description": "WAT55 door systems"
+    },
+    "bahcesehirKolejiHalkali": {
+      "title": "Bahçeşehir Koleji Halkalı",
+      "description": "WAT55 systems"
+    }
+  },
+  "about": {
+    "title": "About Us",
+    "subtitle": "18 years of experience",
+    "vision": {
+      "title": "Vision",
+      "description": "To be the preferred aluminium sector solution partner without compromising the principle of trust."
+    },
+    "mission": {
+      "title": "Mission",
+      "description": "To work in cooperation with our stakeholders, providing functional and quality solutions for changing customer needs."
+    },
+    "experience": "18 Years of Experience",
+    "export": "49 Country Export Capacity",
+    "customers": "8,950 Different Customer and Supplier",
+    "shipments": "23K+ Ton Product Shipments"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Get in touch with us",
+    "address": {
+      "headquarters": "Headquarters",
+      "factory": "Factory",
+      "email": "Email",
+      "phone": "Phone",
+      "whatsapp": "WhatsApp",
+      "maps": "Location"
+    },
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone",
+      "subject": "Subject",
+      "message": "Message",
+      "required": "Required fields",
+      "success": "Message sent successfully"
+    }
+  },
+  "footer": {
+    "corporate": "Corporate",
+    "about": "About",
+    "visionMission": "Vision & Mission",
+    "history": "Our History",
+    "references": "References",
+    "products": "Products",
+    "aluminiumProfiles": "Aluminium Profiles",
+    "accessories": "Accessories",
+    "compositePanels": "Composite Panels",
+    "suspensionSystems": "Suspension Systems",
+    "services": "Services",
+    "surfaceTreatment": "Surface Treatment",
+    "mechanicalProcessing": "Mechanical Processing",
+    "izomatService": "Izomat",
+    "projectService": "Project Services",
+    "address": "Addresses",
+    "contact": "Contact",
+    "email": "Email",
+    "phone": "Phone",
+    "whatsapp": "WhatsApp",
+    "socials": "Social Media",
+    "rights": "© 2023 Kavin System Solutions All rights reserved.",
+    "legal": {
+      "kvkk": "KVKK",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Use"
+    }
+  },
+  "language": {
+    "turkish": "Türkçe",
+    "english": "English"
+  },
+  "ui": {
+    "toggleMenu": "Toggle menu",
+    "closeMenu": "Close menu",
+    "openMenu": "Open menu",
+    "scrollTop": "Scroll to top",
+    "close": "Close",
+    "expand": "Expand",
+    "collapse": "Collapse",
+    "playVideo": "Play video",
+    "pauseVideo": "Pause video",
+    "mute": "Mute",
+    "unmute": "Unmute"
+  }
+}

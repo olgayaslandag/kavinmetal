@@ -1,9 +1,9 @@
 "use client";
 
-import { contactInfo } from '../data/content';
-
+import { getContent } from "@/data/index";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import {
   ArrowUp,
   Facebook,
@@ -15,6 +15,11 @@ import {
 } from "lucide-react";
 
 export default function SiteFooter() {
+  const pathname = usePathname();
+  const isEn = pathname.startsWith("/en");
+  const effectiveLocale = isEn ? "en" : "tr";
+  const content = getContent(effectiveLocale);
+
   const [showTop, setShowTop] = useState(false);
 
   useEffect(() => {
@@ -25,123 +30,154 @@ export default function SiteFooter() {
   }, []);
 
   const scrollTop = () => {
-    const reduced = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     window.scrollTo({ top: 0, behavior: reduced ? "auto" : "smooth" });
   };
+
+  // Links to hide from main navigation (content sections, not primary nav)
+  const hiddenLabels = isEn ? ['News'] : ['Haberler'];
+
+  // Navigation links based on locale
+  // For EN: show EN navLinks, but fallback to TR hrefs for sections without EN equivalents
+  // For TR: show TR navLinks
+  const footerNavLinks = isEn
+    ? content.navLinks
+        .filter((link) => link.href.startsWith("/en/"))
+        : content.navLinks;
+  const filteredFooterNavLinks = footerNavLinks.filter(
+    (link) => !hiddenLabels.includes(link.label)
+  );
+
+  // Bottom quick links: KVKK, Privacy Policy, Terms of Use
+  // Show locale-appropriate links
+  const kvkklink = isEn ? (
+    <Link href="/en/kvkk">KVKK</Link>
+  ) : (
+    <Link href="/kvkk">KVKK</Link>
+  );
+  const privacyLink = isEn ? (
+    <Link href="/en/privacy">Privacy Policy</Link>
+  ) : (
+    <Link href="/gizlilik-politikasi">Privacy Policy</Link>
+  );
+  const termsLink = isEn ? (
+    <Link href="/en/terms">Terms of Use</Link>
+  ) : (
+    <Link href="/kullanim-sartlari">Terms of Use</Link>
+  );
 
   return (
     <footer id="contact" role="contentinfo">
       <div className="container footer-grid">
         <div className="reveal" data-reveal="up" data-delay="0">
-          <h3>KURUMSAL</h3>
-          <Link href="/hakkimizda">Hakkımızda</Link>
-          <Link href="/hakkimizda">Vizyon & Misyon</Link>
-          <Link href="/hakkimizda">Tarihçemiz</Link>
-          <Link href="/projeler">Referanslar</Link>
+          <h3>{isEn ? "About" : "Hakkımızda"}</h3>
+          <Link href={isEn ? "/en/about" : "/hakkimizda"}>
+            {isEn ? "About" : "Hakkımızda"}
+          </Link>
+          <Link href={isEn ? "/en/about" : "/hakkimizda"}>
+            {isEn ? "Vision & Mission" : "Vizyon & Misyon"}
+          </Link>
+          <Link href={isEn ? "/en/about" : "/hakkimizda"}>
+            {isEn ? "History" : "Tarihçe"}
+          </Link>
         </div>
         <div className="reveal" data-reveal="up" data-delay="80">
-          <h3>ÜRÜNLER</h3>
-          <Link href="/cozumler/aluminyum-profiller">Alüminum Profiller</Link>
-          <Link href="/cozumler/aksesuarlar">Aksesuarlar</Link>
-          <Link href="/cozumler/kompozit-paneller">Kompozit Paneller</Link>
-          <Link href="/cozumler/kupeste-profilleri">Kupeste Profilleri</Link>
+          <h3>{isEn ? "PRODUCTS" : "ÜRÜNLER"}</h3>
+          {content.products.map((product) => (
+            <Link key={product.key} href={product.href}>
+              {product.title[0]}
+            </Link>
+          ))}
         </div>
         <div className="reveal" data-reveal="up" data-delay="160">
-          <h3>HİZMETLER</h3>
-          <Link href="/hizmetler/yuzey-islemleri">Yüzey İşlemleri</Link>
-          <Link href="/hizmetler/mekanik-islemler">Mekanik İşlemler</Link>
-          <Link href="/hizmetler/izomat">İzomat</Link>
-          <Link href="/hizmetler/proje-hizmetleri">Proje Hizmetleri</Link>
+          <h3>{isEn ? "SERVICES" : "HİZMETLER"}</h3>
+          {content.services.map((service) => (
+            <Link
+              key={service.key}
+              href={service.href}
+            >
+              {service.title}
+            </Link>
+          ))}
         </div>
         <div className="reveal" data-reveal="up" data-delay="240">
-          <h3>ADRESLERİMİZ</h3>
-          <p className="contact-line">
-            <span>
-              <strong>Merkez:</strong> Yenibosna Merkez Mah. Kavak Sk. No:4-E,
-              34197 Bahçelievler / İstanbul
-            </span>
-          </p>
-          <p className="contact-line">
-            <span>
-              <strong>Fabrika:</strong> Sarıcaali Küme Evler No:311/ İstiklal 39750
-              Lüleburgaz / Kırklareli
-            </span>
-          </p>
+          <h3>{isEn ? "ADDRESSES" : "ADRESLERİMİZ"}</h3>
+          <div className="footer-address">
+            <span className="footer-address-text">{content.contactInfo.headquarters}</span>
+          </div>
         </div>
         <div className="reveal" data-reveal="up" data-delay="320">
-          <h3>İLETİŞİM</h3>
+          <h3>{isEn ? "CONTACT" : "İLETİŞİM"}</h3>
           <p className="contact-line">
             <Mail aria-hidden="true" />{" "}
             <a
-              href={`mailto:${contactInfo.email}`}
+              href={`mailto:${content.contactInfo.email}`}
               style={{ color: "inherit", textDecoration: "none" }}
             >
-              {contactInfo.email}
+              {content.contactInfo.email}
             </a>
           </p>
           <p className="contact-line">
             <Phone aria-hidden="true" />{" "}
             <a
-              href={contactInfo.phoneHref}
+              href={content.contactInfo.phoneHref}
               style={{ color: "inherit", textDecoration: "none" }}
             >
-              {contactInfo.phone}
+              {content.contactInfo.phone}
             </a>
           </p>
           <p className="contact-line">
             <MessageCircle aria-hidden="true" />{" "}
             <a
-              href={contactInfo.whatsapp}
+              href={content.contactInfo.whatsapp}
               target="_blank"
               rel="noopener"
               style={{ color: "inherit", textDecoration: "none" }}
             >
-              WhatsApp Hattı
+              WhatsApp Line
             </a>
           </p>
           <div className="socials">
             <a
-              href={contactInfo.socials.linkedin}
+              href={content.contactInfo.socials.linkedin}
               target="_blank"
               rel="noopener"
-              aria-label="LinkedIn"
+              aria-label={isEn ? "LinkedIn" : "LinkedIn"}
             >
               <Linkedin />
             </a>
             <a
-              href={contactInfo.socials.instagram}
+              href={content.contactInfo.socials.instagram}
               target="_blank"
               rel="noopener"
-              aria-label="Instagram"
+              aria-label={isEn ? "Instagram" : "Instagram"}
             >
               <Instagram />
             </a>
             <a
-              href={contactInfo.socials.facebook}
+              href={content.contactInfo.socials.facebook}
               target="_blank"
               rel="noopener"
-              aria-label="Facebook"
+              aria-label={isEn ? "Facebook" : "Facebook"}
             >
               <Facebook />
             </a>
-            <a href={`mailto:${contactInfo.email}`} aria-label="E-posta">
+            <a href={`mailto:${content.contactInfo.email}`} aria-label={isEn ? "Email" : "E-posta"}>
               <Mail />
             </a>
           </div>
         </div>
       </div>
       <div className="container footer-bottom">
-        <span>© 2026 Kavin System Solutions Tüm hakları saklıdır.</span>
+        <span>© 2026 Kavin System Solutions All rights reserved.</span>
         <div>
-          <Link href="/kvkk">KVKK</Link>
-          <Link href="/gizlilik-politikasi">Gizlilik Politikası</Link>
-          <Link href="/kullanim-sartlari">Kullanım Şartları</Link>
+          {kvkklink}
+          {privacyLink}
+          {termsLink}
         </div>
         <button
           className="back-top"
-          aria-label="Yukarı çık"
+          aria-label={isEn ? "Back to top" : "Yukarı çık"}
           onClick={scrollTop}
           hidden={!showTop}
         >

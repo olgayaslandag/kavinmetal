@@ -1,10 +1,25 @@
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
-import { projects } from "@/data/content";
 import CarouselControls from "./CarouselControls";
 
 // Projeler: carousel (kayar pencere + sayfa noktaları + oklar)
-export default function Projects() {
+interface ProjectsProps {
+  data: any[];
+  locale?: "tr" | "en";
+}
+
+export default function Projects({ data, locale = "tr" }: ProjectsProps) {
+  const effectiveLocale = locale ?? "tr";
+
+  // TR: Örnek veri yapıları (gerçek veri content.tr.ts'de tutuluyor)
+  // EN copy based on locale
+  const eyebrowText = effectiveLocale === "en" ? "PROJECTS" : "ÖRNEK";
+  const titleText = effectiveLocale === "en" ? "PROJELER" : "PROJELER";
+  const sectionDesc = effectiveLocale === "en"
+      ? "With our high stock capacity, fast supply power and durability, we deliver products and services to many qualified projects both domestically and internationally."
+      : "Müşteri memnuniyetimiz ile yaşam alanlarına değer katacak sürdürülebilir, ulaşılabilir, kaliteli ve uzun ömürlü ürünleri sunma kabiliyetimiz ile yurt içi ve yurt dışındaki birçok nitelikli projeye ürün ve hizmet sunuyoruz.";
+  const viewAllText = effectiveLocale === "en" ? "ALL PROJECTS" : "TÜM PROJELER";
+
   return (
     <section
       className="section projects"
@@ -14,17 +29,12 @@ export default function Projects() {
       <div className="container">
         <div className="section-heading">
           <div className="section-heading-left">
-            <p className="eyebrow">ÖRNEK</p>
-            <h2 id="projects-title">PROJELER</h2>
-            <p className="section-desc">
-              Müşteri memnuniyeti konusundaki hassasiyetimiz ile yaşam
-              alanlarına değer katacak sürdürülebilir, ulaşılabilir, kaliteli
-              ve uzun ömürlü ürünleri sunma kabiliyetimiz ile yurt içi ve yurt
-              dışındaki birçok nitelikli projeye ürün ve hizmet sunuyoruz.
-            </p>
+            <p className="eyebrow">{eyebrowText}</p>
+            <h2 id="projects-title">{titleText}</h2>
+            <p className="section-desc">{sectionDesc}</p>
           </div>
-          <a className="text-link" href="/projeler">
-            TÜM PROJELER <ArrowRight size={16} />
+          <a className="text-link" href={`/projeler`}>
+            {viewAllText}<ArrowRight size={16} />
           </a>
         </div>
         <div className="project-wrap">
@@ -32,11 +42,11 @@ export default function Projects() {
             className="project-viewport"
             role="region"
             aria-roledescription="carousel"
-            aria-label="Projeler"
+            aria-label={effectiveLocale === "en" ? "Projects" : "Projeler"}
             tabIndex={0}
           >
             <div className="project-grid">
-              {projects.map((project, i) => (
+              {data.map((project, i) => (
                 <Link
                   key={project.title}
                   className="project-card reveal"
@@ -45,27 +55,25 @@ export default function Projects() {
                   href={project.href}
                   aria-label={project.title}
                 >
-                  <div>
-                    <img
-                      src={project.image}
-                      alt={project.alt}
-                      loading="lazy"
-                      decoding="async"
-                    />
-                    <span className="card-badge" aria-hidden="true">
-                      <ArrowUpRight size={18} />
-                    </span>
-                  </div>
+                  <img
+                    src={project.image}
+                    alt={project.alt}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <span className="card-badge" aria-hidden="true">
+                    <ArrowUpRight size={18} />
+                  </span>
                   <strong>{project.title}</strong>
-</Link>
-            ))}
+                </Link>
+              ))}
             </div>
           </div>
           <CarouselControls
             targetSelector=".project-grid"
-            label="Proje navigasyonu"
+            label={effectiveLocale === "en" ? "Project navigation" : "Proje navigasyonu"}
             showDots
-            itemCount={projects.length}
+            itemCount={data.length}
           />
         </div>
       </div>

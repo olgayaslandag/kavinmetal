@@ -8,11 +8,13 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 export default function CarouselControls({
   targetSelector,
   label,
+  locale = 'tr',
   showDots = false,
   itemCount,
 }: {
   targetSelector: string;
   label: string;
+  locale?: 'tr' | 'en';
   showDots?: boolean;
   itemCount: number;
 }) {
@@ -114,7 +116,7 @@ export default function CarouselControls({
               role="tab"
               aria-selected={i === page}
               aria-current={i === page}
-              aria-label={`Sayfa ${i + 1}`}
+              aria-label={locale === 'en' ? `Page ${i + 1}` : `Sayfa ${i + 1}`}
               onClick={() => goToPage(i)}
             />
           ))}
@@ -123,13 +125,13 @@ export default function CarouselControls({
       <div className="carousel-arrows">
         <button
           type="button"
-          aria-label="Önceki"
+          aria-label={locale === 'en' ? "Previous" : "Önceki"}
           onClick={() => scroll(-1)}
           disabled={!canPrev}
         >
           <ArrowLeft size={18} />
         </button>
-        <button type="button" aria-label="Sonraki" onClick={() => scroll(1)} disabled={!canNext}>
+        <button type="button" aria-label={locale === 'en' ? "Next" : "Sonraki"} onClick={() => scroll(1)} disabled={!canNext}>
           <ArrowRight size={18} />
         </button>
       </div>

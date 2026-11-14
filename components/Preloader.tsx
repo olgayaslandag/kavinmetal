@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 
 // Açılış perdesi: logo + ilerleme çubuğu + yüzde sayaç
 // - Sayfa `load` olana kadar %90'a doğru ilerler, sonra %100'e tamamlar
@@ -11,6 +12,8 @@ const MAX_MS = 6000;
 const EXIT_MS = 750;
 
 export default function Preloader() {
+  const pathname = usePathname();
+  const isEn = pathname.startsWith("/en");
   const [progress, setProgress] = useState(0);
   const [leaving, setLeaving] = useState(false);
   const [gone, setGone] = useState(false);
@@ -97,7 +100,7 @@ export default function Preloader() {
     <div
       className={`preloader${leaving ? " preloader--leaving" : ""}`}
       role="status"
-      aria-label="Sayfa yükleniyor"
+      aria-label={isEn ? "Loading page" : "Sayfa yükleniyor"}
       aria-hidden={leaving || undefined}
     >
       <div className="preloader__inner">
@@ -105,7 +108,7 @@ export default function Preloader() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
              src="/assets/img/logo_white.png"
-alt="Kavin Metal"
+alt="Kavin System Solutions"
              width={220}
              height={120}
              draggable={false}

@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Plus } from "lucide-react";
-import { corporateAccordion, corporateFacts, aboutText, visionMission } from "@/data/content";
+import { getContent } from "@/data/index";
 
 // Sayı animasyonu: `start` gelince 0'dan hedefe sayar ("23K+" → 23 + "K+")
 // Başlatma kararı ebeveyndeki tek observer'a ait — her sayı kendi dar
@@ -14,7 +14,7 @@ function CountUp({ value, start }: { value: string; start: boolean }) {
     if (!start) return;
     const parts = value.match(/^(\d+)(.*)$/);
     if (!parts) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (window.matchMedia("(prefers-reduce-motion: reduce)").matches) return;
     const target = parseInt(parts[1], 10);
     const suffix = parts[2];
     const duration = 1500;
@@ -34,7 +34,14 @@ function CountUp({ value, start }: { value: string; start: boolean }) {
 }
 
 // Kurumsal blok: görsel + istatistik + akordeon
-export default function CorporateIntro() {
+export default function CorporateIntro({ locale }: { locale?: 'tr' | 'en' }) {
+  const effectiveLocale = locale ?? 'tr';
+  const isEn = effectiveLocale === 'en';
+  const content = getContent(effectiveLocale);
+  const corporateFacts = content.corporateFacts;
+  const aboutText = content.aboutText;
+  const visionMission = content.visionMission;
+  const corporateAccordion = content.corporateAccordion;
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const factsRef = useRef<HTMLDivElement | null>(null);
   const [factsInView, setFactsInView] = useState(false);
@@ -43,7 +50,7 @@ export default function CorporateIntro() {
   useEffect(() => {
     const el = factsRef.current;
     if (!el) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (window.matchMedia("(prefers-reduce-motion: reduce)").matches) return;
     if (!("IntersectionObserver" in window)) {
       setFactsInView(true);
       return;
@@ -61,6 +68,8 @@ export default function CorporateIntro() {
     return () => observer.disconnect();
   }, []);
 
+  const eyebrowText = effectiveLocale === 'en' ? "CORPORATE" : "KURUMSAL";
+
   return (
     <section
       className="corporate-intro"
@@ -68,31 +77,30 @@ export default function CorporateIntro() {
       aria-labelledby="corporate-title"
     >
       <div className="container corporate-intro__grid">
-        <div
-          className="corporate-intro__visuals reveal"
+        <div className="corporate-intro__visuals reveal"
           data-reveal="left"
-          aria-label="Kavin Metal üretim ve mimari uygulamaları"
+          aria-label={isEn ? "Kavin System Solutions production and architectural applications" : "Kavin System Solutions üretim ve mimari uygulamaları"}
         >
           <figure className="corporate-photo corporate-photo-main">
             <img
               src="/assets/img/services/toz-boya-2.jpg"
-              alt="Kavin Metal elektrostatik toz boya tesisi"
+              alt={isEn ? "Kavin System Solutions electrostatic coating facility" : "Kavin System Solutions elektrostatik toz boya tesisi"}
               loading="lazy"
               decoding="async"
             />
           </figure>
         </div>
         <div className="corporate-intro__statement reveal" data-reveal="right">
-          <p className="eyebrow">KURUMSAL</p>
-          <h2 id="corporate-title">Mimari çözümleriniz için</h2>
+          <p className="eyebrow">{eyebrowText}</p>
+          <h2 id="corporate-title">{effectiveLocale === 'en' ? "For your architectural solutions" : "Mimari çözümleriniz için"}</h2>
           <p className="section-desc">
             {aboutText[0]} {aboutText[1]}
           </p>
-          <p className="section-desc" style={{ marginTop: "1rem" }}>
-            Yüksek hacimli stok, hızlı tedarik gücümüz ve {visionMission.vision.toLowerCase()}{" "}
-            vizyonuyla yurt içi ve yurt dışında yüzlerce projede güvenilir
-            çözüm ortağı olmaya devam ediyoruz.
-          </p>
+<p className="section-desc" style={{ marginTop: "1rem" }}>
+              {isEn ? "Our high stock capacity, fast supply power and" : "Yüksek hacimli stok, hızlı tedarik gücümüz ve"}
+              {visionMission.vision.toLowerCase()}{" "}
+              {isEn ? "continue to be reliable solution partners for hundreds of projects both domestically and internationally." : "vizyonyla yurt içi ve yurt dışında yüzlerce projede güvenilir çözüm ortağı olmaya devam ediyoruz."}
+            </p>
           <div className="corporate-intro__details">
             <div className="corporate-intro__content">
               <div className="corporate-intro__facts" ref={factsRef}>

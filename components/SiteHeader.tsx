@@ -2,22 +2,41 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { ChevronDown, Menu, X } from "lucide-react";
-import { navLinks } from "@/data/content";
+import { Menu, X } from "lucide-react";
+import { getSwitchHref, isEnPath } from "@/lib/i18n/locale";
+import { navLinks as trNavLinks } from "../data/content";
+import { navLinks as enNavLinks } from "../data/content.en";
 
-
-// Üst menü: scroll'da .scrolled, mobilde açılır menü
+// Mobile nav open state: scroll'da .scrolled, mobilde açılır menü
 export default function SiteHeader() {
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
+  // Initialize scrolled state on mount
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    setScrolled(window.scrollY > 300);
+  }, [pathname]);
+
+  // Determine if current page is EN locale based on pathname
+  const isEn = isEnPath(pathname);
+
+  // Links to hide from main navigation (content sections, not primary nav)
+  const hiddenLabels = isEn ? ['News'] : ['Haberler'];
+
+  // Filter nav links based on locale
+  // EN'de: EN href'leri göster, yoksa TR href'leri (chrome EN kalması için)
+  // TR'de: TR href'leri göster
+  const currentNavLinks = isEn ? enNavLinks : trNavLinks;
+  const filteredNavLinks = isEn
+    ? currentNavLinks
+        .filter((link) => link.href.startsWith('/en/'))
+        : currentNavLinks;
+  const finalNavLinks = filteredNavLinks.filter(
+    (link) => !hiddenLabels.includes(link.label)
+  );
 
   return (
     <header
@@ -25,24 +44,28 @@ export default function SiteHeader() {
       className={`site-header${scrolled ? " scrolled" : ""}`}
     >
       <div className="container header-inner">
-        <a className="brand" href="/" aria-label="Kavin Metal ana sayfa">
+        <Link
+          className="brand"
+          href={isEn ? '/en' : '/'}
+          aria-label={isEn ? 'Kavin System Solutions home page' : 'Kavin System Solutions ana sayfa'}
+        >
           <Image
             className="brand-logo brand-logo-dark"
             src="/assets/img/logo_original.png"
-            alt="Kavin Metal"
+            alt="Kavin System Solutions"
             width={180}
             height={48}
             priority
           />
-           <Image
-             className="brand-logo brand-logo-light"
-             src="/assets/img/logo_white.png"
-             alt="Kavin Metal"
-             width={180}
-             height={48}
-             priority
-           />
-        </a>
+          <Image
+            className="brand-logo brand-logo-light"
+            src="/assets/img/logo_white.png"
+            alt="Kavin System Solutions"
+            width={180}
+            height={48}
+            priority
+          />
+        </Link>
 
         <button
           className="menu-toggle d-lg-none"
@@ -56,17 +79,43 @@ export default function SiteHeader() {
 
         <nav
           id="main-nav"
-          aria-label="Ana menü"
+          aria-label={isEn ? "Main menu" : "Ana menü"}
           className={`main-nav${open ? " open" : ""}`}
         >
-          {navLinks.map((link) => (
-            <Link key={link.label} href={link.href} onClick={() => setOpen(false)}>
+          {finalNavLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              onClick={() => setOpen(false)}
+            >
               {link.label}
             </Link>
           ))}
-          <button className="language" aria-label="Dil seçimi" type="button">
-            TR <ChevronDown size={14} />
-          </button>
+
+          <div className="lang-switch" role="group" aria-label="Language selection">
+            <a
+              className={`lang-switch__item${isEn ? "" : " active"}`}
+              href={getSwitchHref(pathname, 'tr')}
+              aria-current={isEn ? "true" : undefined}
+              onClick={() => {
+                // Switch to TR: navigate to TR equivalent
+                window.location.href = getSwitchHref(pathname, 'tr');
+              }}
+            >
+              TR
+            </a>
+            <Link
+              className={`lang-switch__item${isEn ? " active" : ""}`}
+              href={getSwitchHref(pathname, "en")}
+              lang="en"
+              onClick={() => {
+                // Switch to EN: navigate to EN equivalent
+                window.location.href = getSwitchHref(pathname, "en");
+              }}
+            >
+              EN
+            </Link>
+          </div>
         </nav>
       </div>
     </header>

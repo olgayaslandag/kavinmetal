@@ -3,15 +3,19 @@
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
-import { heroSlides, HERO_AUTOPLAY_MS } from "@/data/content";
-import HeroVideo from "./HeroVideo";
+import { getContent } from "@/data/index";
+import { HERO_AUTOPLAY_MS } from "@/data/content";
 
 // Hero slider: slayt başına video + metin, otomatik geçiş + oklar + gösterge
-export default function Hero() {
+export default function Hero({ locale }: { locale?: 'tr' | 'en' }) {
+  const effectiveLocale = locale ?? 'tr';
+  const content = getContent(effectiveLocale);
+  const heroSlides = content.heroSlides;
+  const count = heroSlides.length;
+
   const [active, setActive] = useState(0);
   const pausedRef = useRef(false);
   const bgRef = useRef<HTMLDivElement | null>(null);
-  const count = heroSlides.length;
 
   // Slayt değişiminde zemin: blur'dan nete dönüş animasyonunu yeniden tetikle
   // (HeroVideo remount edilmez, sadece kapsayıcıda animasyon restart yapılır)
@@ -45,6 +49,13 @@ export default function Hero() {
 
   const slide = heroSlides[active];
 
+  // Locale-specific CTA text
+  const ctaText = effectiveLocale === 'en' ? "OUR SOLUTIONS" : "ÇÖZÜMLERİMİZ";
+  const ctaLinkText = effectiveLocale === 'en' ? "Discover" : "KEŞFET";
+  const ctaHref = effectiveLocale === 'en' ? `/en/solutions` : "/cozumler";
+  // Locale-specific scroll text
+  const scrollAriaLabel = effectiveLocale === 'en' ? "Scroll down" : "Aşağı kaydır";
+
   return (
     <section
       className="hero"
@@ -55,9 +66,11 @@ export default function Hero() {
       onFocus={() => (pausedRef.current = true)}
       onBlur={() => (pausedRef.current = false)}
     >
-      <div ref={bgRef} className="hero-video is-switching" aria-hidden="true">
-        {/* Statik iframe yok: player JS ile üretilir, slayt değişince aynı player'a yüklenir */}
-        <HeroVideo videoId={slide.videoId} />
+      <div ref={bgRef} className="hero-media is-switching" aria-hidden="true">
+        {heroSlides.map((s, i) => (
+          <img key={s.index} src={s.image} alt={s.alt} className={i === active ? "is-active" : ""}
+               loading={i === 0 ? "eager" : "lazy"} fetchPriority={i === 0 ? "high" : "auto"} />
+        ))}
       </div>
       <div className="hero-overlay" aria-hidden="true" />
       <div className="container hero-content">
@@ -77,15 +90,15 @@ export default function Hero() {
           <span className="rule hero-anim" aria-hidden="true" style={{ ["--d" as string]: "0.34s" }} />
           <p className="lead hero-anim" style={{ ["--d" as string]: "0.46s" }}>{slide.lead}</p>
           <span className="hero-anim hero-cta" style={{ ["--d" as string]: "0.6s" }}>
-            <Link className="btn btn-sm btn-primary" href="/cozumler">
-              ÇÖZÜMLERİMİZ <ArrowRight size={16} />
+            <Link className="btn btn-sm btn-primary" href={ctaHref}>
+              {ctaText} <ArrowRight size={16} />
             </Link>
           </span>
         </div>
         <div className="hero-side hero-anim" style={{ ["--d" as string]: "0.7s" }}>
           <div
             className="slide-index"
-            aria-label="Hero slaytları"
+            aria-label="Hero slides"
             role="tablist"
           >
             {heroSlides.map((s, i) =>
@@ -99,7 +112,7 @@ export default function Hero() {
                   type="button"
                   role="tab"
                   aria-selected="false"
-                  aria-label={`Slayt ${s.index}`}
+                  aria-label={`Slide ${s.index}`}
                   onClick={() => goTo(i)}
                 >
                   {s.index}
@@ -108,10 +121,10 @@ export default function Hero() {
             )}
           </div>
           <div className="hero-arrows">
-            <button type="button" aria-label="Önceki slayt" onClick={prev}>
+            <button type="button" aria-label="Previous slide" onClick={prev}>
               <ChevronLeft size={18} />
             </button>
-            <button type="button" aria-label="Sonraki slayt" onClick={next}>
+            <button type="button" aria-label="Next slide" onClick={next}>
               <ChevronRight size={18} />
             </button>
           </div>
@@ -121,9 +134,9 @@ export default function Hero() {
       <div className="hero-progress" aria-hidden="true">
         <span key={active} className="hero-progress__bar" style={{ ["--hero-ms" as string]: `${HERO_AUTOPLAY_MS}ms` }} />
       </div>
-      <a className="hero-scroll" href="/cozumler" aria-label="Aşağı kaydır">
+      <a className="hero-scroll" href={effectiveLocale === 'en' ? `/en/solutions` : `/cozumler`} aria-label={scrollAriaLabel}>
         <span className="hero-scroll__mouse"><span className="hero-scroll__wheel" /></span>
-        <span className="hero-scroll__text">KEŞFET</span>
+        <span className="hero-scroll__text">{ctaLinkText}</span>
       </a>
     </section>
   );

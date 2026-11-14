@@ -1,9 +1,12 @@
-import { referenceLogos } from "@/data/references";
-import Link from "next/link";
-
 // Referans logo duvarı: sonsuz kayan şerit (marquee)
 // İkinci kopya aria-hidden — ekran okuyucu logoları bir kez okur
-export default function ReferencesCarousel() {
+interface ReferencesCarouselProps {
+  data: any[];
+  locale?: 'tr' | 'en';
+}
+export default function ReferencesCarousel({ data, locale }: ReferencesCarouselProps) {
+  const effectiveLocale = locale ?? 'tr';
+  const isEn = effectiveLocale === 'en';
   return (
     <section
       className="section references"
@@ -13,12 +16,9 @@ export default function ReferencesCarousel() {
       <div className="container">
         <div className="section-heading reveal" data-reveal="up">
           <div className="section-heading-left">
-            <p className="eyebrow">Kavin'i Tercih Etken</p>
-            <h2 id="references-title">Güçlü şirketler</h2>
+            <p className="eyebrow">{isEn ? "PREFER KAVIN" : "Kavin'i Tercih Etken"}</p>
+            <h2 id="references-title">{isEn ? "Strong Companies" : "Güçlü şirketler"}</h2>
           </div>
-          <Link href="/projeler">
-            TÜM REFERANSLAR
-          </Link>
         </div>
       </div>
       <div className="refs-viewport reveal" data-reveal="blur" data-delay="150">
@@ -29,7 +29,7 @@ export default function ReferencesCarousel() {
               className="refs-group"
               aria-hidden={copy === 1 || undefined}
             >
-              {referenceLogos.map((logo) => (
+              {data.map((logo) => (
                 <div key={`${copy}-${logo.src}`} className="refs-item">
                   <img
                     src={logo.src}

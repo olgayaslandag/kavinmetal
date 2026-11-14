@@ -1,10 +1,18 @@
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
-import { services } from "@/data/content";
+import type { ServiceSummary } from "@/lib/api/types";
 import CarouselControls from "./CarouselControls";
+import { getSwitchHref } from "@/lib/i18n/locale";
 
 // Hizmetler: 4 kart + başlık + navigasyon
-export default function Services() {
+interface ServicesProps {
+  data: ServiceSummary[];
+  locale?: 'tr' | 'en';
+}
+export default function Services({ data, locale }: ServicesProps) {
+  const effectiveLocale = locale ?? 'tr';
+  const isEn = effectiveLocale === 'en';
+
   return (
     <section
       className="section services"
@@ -14,26 +22,27 @@ export default function Services() {
       <div className="container">
         <div className="section-heading">
           <div className="section-heading-left">
-            <p className="eyebrow">YAŞAMINIZA ÖZEL</p>
-            <h2 id="services-title">Hizmetler</h2>
+            <p className="eyebrow">{isEn ? "DISCOVER" : "YAŞAMINIZA ÖZEL"}</p>
+            <h2 id="services-title">{isEn ? "Services" : "Hizmetler"}</h2>
             <p className="section-desc">
-              Yüzey işlemleri, mekanik işlemler ve size özel imalat çözümleri
-              ile güçlü projeler oluşturuyoruz.
+              {isEn
+                ? "Surface treatments, mechanical processing and custom manufacturing solutions for strong projects."
+                : "Yüzey işlemleri, mekanik işlemler ve size özel imalat çözümleri ile güçlü projeler oluşturuyoruz."}
             </p>
           </div>
-          <a className="text-link" href="/iletisim">
-            TÜM HİZMETLER <ArrowRight size={16} />
+          <a className="text-link" href={isEn ? "/en/contact" : "/iletisim"}>
+            {isEn ? "ALL SERVICES" : "TÜM HİZMETLER"} <ArrowRight size={16} />
           </a>
         </div>
         <div className="service-wrap">
           <div className="service-grid">
-            {services.map((service, i) => (
+            {data.map((service, i) => (
               <Link
-                key={service.title}
+                key={service.key ?? service.slug ?? service.href}
                 className="service-card reveal"
                 data-reveal="deal"
                 data-delay={i * 140}
-                href={service.href}
+                href={service.href ?? `/${isEn ? 'en/services' : 'hizmetler'}/${service.slug}`}
                 aria-label={service.title}
               >
                 <div className="service-image">
@@ -56,8 +65,8 @@ export default function Services() {
           </div>
           <CarouselControls
             targetSelector=".service-grid"
-            label="Hizmet navigasyonu"
-            itemCount={services.length}
+            label={isEn ? "Service navigation" : "Hizmet navigasyonu"}
+            itemCount={data.length}
           />
         </div>
       </div>

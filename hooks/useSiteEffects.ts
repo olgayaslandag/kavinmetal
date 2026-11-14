@@ -134,7 +134,8 @@ export function useSmoothAnchors() {
       const anchor = (e.target as HTMLElement).closest?.("a[href^=\"#\"]");
       if (!anchor) return;
       const id = anchor.getAttribute("href");
-      if (!id || id === "#") return;
+      if (!id) return;
+      if (id === "#") { e.preventDefault(); return; }
       const target = document.querySelector(id);
       if (!target) return;
       e.preventDefault();
