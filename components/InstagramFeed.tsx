@@ -72,14 +72,14 @@ return (
         </a>
 <div className="insta-grid" aria-live="polite">
         {loading
-          ? Array.from({ length: 12 }).map((_, i) => (
+          ? Array.from({ length: 6 }).map((_, i) => (
               <div
                 key={`skeleton-${i}`}
                 className="insta-card insta-skeleton"
                 aria-hidden="true"
               />
             ))
-          : posts.map((post, i) => (
+          : posts.slice(0, 6).map((post, i) => (
               <a
                 key={post.id}
                 className="insta-card reveal"

@@ -717,6 +717,12 @@ footer{border-top:1px solid var(--line);padding:5rem 0 2rem;background:var(--sof
 .reveal[data-reveal="zoom"]{transform:scale(.92)}
 .reveal[data-reveal="blur"]{transform:none;filter:blur(14px)}
 .reveal[data-reveal="flip"]{transform:perspective(800px) rotateX(10deg) translateY(1.5rem)}
+/* Prevent hover movement for corporate intro statement to stop unwanted movement */
+.corporate-intro__statement.reveal:hover,
+.corporate-intro__statement.reveal:hover .reveal {
+  transform: none !important;
+  transition: none;
+}
 .reveal.visible,.reveal.is-visible{opacity:1;filter:blur(0)}
 /* :hover dışında: belirme sonu konumu; hover'da kartın kendi kalkışı ezilmesin */
 .reveal.visible:not(:hover),.reveal.is-visible:not(:hover){transform:none}
@@ -814,7 +820,7 @@ img{transition:filter .4s ease}
 }
 
 /* ---------- Instagram ---------- */
-.section.instagram{background:linear-gradient(180deg,#eaf5df 0%,#f4f9ec 100%)}
+.section.instagram{background:var(--soft)}
 .insta-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:1.5rem}
 .insta-card{
   display:block;border:1px solid var(--line);border-radius:0.75rem;overflow:hidden;

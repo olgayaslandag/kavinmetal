@@ -101,7 +101,7 @@ export default function SiteFooter() {
           ))}
         </div>
         <div className="reveal" data-reveal="up" data-delay="240">
-          <h3>{isEn ? "ADDRESSES" : "ADRESLERİMİZ"}</h3>
+          <h3>{isEn ? "ADDRESS" : "ADRES"}</h3>
           <div className="footer-address">
             <span className="footer-address-text">{content.contactInfo.headquarters}</span>
           </div>

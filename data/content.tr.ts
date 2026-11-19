@@ -218,7 +218,7 @@ export const services: Service[] = [
   {
     key: "surface-treatment",
     slug: "yuzey-islemleri",
-    title: "YÜZEY İŞLEMLERİ",
+    title: "Yüzey İşlemeleri",
     description:
       "Elektrostatik toz boya uygulaması ile yüksek kalite ve dayanıklı floor sonrası floor hizmetleri sunuyoruz. Alüminyum yüzeylerindeki imperfeksiyonları kaldırarak brillanti finish ve korozif dirim sağlayalım.",
     heroLead: "Alüminyum yüzey hazırlama ve toz boya",
@@ -249,7 +249,7 @@ export const services: Service[] = [
   {
     key: "mechanical-processing",
     slug: "mekanik-islemler",
-    title: "MEKANİK İŞLEMLER",
+    title: "Mekanik İşlemler",
     description:
       "CNC işleme, frais ve drilling işlemleri ile hassap ve alüminyum parçalarının hassas işlenmesi. Proje ihtiyaçlarınızı hızlı ve doğru bir şekilde çözüyoruz.",
     heroLead: "CNC ile hassas profil işleme",
@@ -280,7 +280,7 @@ export const services: Service[] = [
   {
     key: "izomat-service",
     slug: "izomat",
-    title: "İZOMAT",
+    title: "İzomat",
     description:
       "Izomat hattında çift testere ile hassas açı ve boyda profil kesimi; seri üretimde zaman ve malzeme tasarrufu sağlıyoruz.",
     heroLead: "Çift testere ile otomatik profil kesimi",
@@ -311,7 +311,7 @@ export const services: Service[] = [
   {
     key: "project-service",
     slug: "proje-hizmetleri",
-    title: "PROJE HİZMETLERİ",
+    title: "Proje Hizmetleri",
     description:
       "Keşften teslime tek elden proje desteği; sistem seçimi, üretim planlama ve lojistik süreçlerini birlikte yönetiyoruz.",
     heroLead: "Mimari proje tek elden yönetimi",
@@ -455,9 +455,9 @@ export const projects: Project[] = [
 
 export const corporateFacts: CorporateFact[] = [
   { value: "18", label: "Yıllık deneyim" },
-  { value: "49", label: "Ülkeye ihracat kapasitesi" },
-  { value: "8950", label: "Farklı müşteri ve tedarikçi" },
-  { value: "23K+", label: "Ton ürün sevkiyatı" },
+  { value: "49", label: "Ülke sayısı" },
+  { value: "8.950", label: "Müşteri ve tedarikçi" },
+  { value: "23K+", label: "Ton ürün stoku" },
 ];
 
 export const corporateTimeline: CorporateTimelineEntry[] = [
@@ -466,25 +466,12 @@ export const corporateTimeline: CorporateTimelineEntry[] = [
     text: "Çağlayan'da 200 m2 alanda kurulduk. Kavin System Solutions olarak sectorumuzda hizmet başlamış oluyoruz.",
   },
   {
-    year: "2007",
-    text: "Boyahanemizin açılışını gerçekleştirdik. Küçükyalı'da mağaza açılışımızı yaptık.",
-  },   {
     year: "2010",
     text: "Yenibosna'da 5.500 m2 yeni merkezimize taşındık. Kavin sistemleri için AR-GE çalışmalarına başladık, İzomat makinesi yatırımımızı yaptık.",
   },
   {
-    year: "2012",
-    text: "Kavin System Solutions markamızın tanıtımı için ilk fuar katılımını yaptık.",
-  },   {
-    year: "2015",
-    text: "Kavin GmbH şirketimizin açılışını gerçekleştirdik. Proje yönetimine başladık.",
-  },
-  {
-    year: "2017",
-    text: "BAU fuarına ilk katılımı sağladık.",
-  },   {
     year: "2022",
-    text: "49 ülkeye ihracat yapabilme kapasitesine ulaştık. Yurt içi ve yurt dışında 25'in üzerinde fuara katıldık.",
+    text: "49 ülkeye ihracat kapasitesine ulaştık.",
   },
   {
     year: "2023",
@@ -501,17 +488,21 @@ export const visionMission: VisionMission = {
 
 export const aboutText: string[] = [
   "Kavin System Solutions, sektörinde öncü konumda olmak için kaliteli ürünler ve hizmetler sunarak müşterilerinin ihtiyaçlarını öndüğü bir ortağı olma hedefine ulaşmıştır.",
-  "Günümüze kadar olan bu süreçte kendini kanıtlamış birçok projeyi başarılı bir şekilde hayata entegre ederek bugün yüzlerce yeni projelere imza atmıştır.",
+  "Günümüze kadar olan bu süreçte birçok başarılı projeyle hizmet vererek bugün 49ülkeye ihracat kapasitesine ulaştık.",
   "Yüksek hacimli stok ve hızlı tedarik gücüyle, bir yandan müşterilerine kaliteli ürün ve hizmet sunarken, diğer yandan da değişime ve yeniliğe açıklığı sayesinde müşterilerin farklı talepleri karşısında esnek ve çözüm odaklı bir yaklaşım sergileyebilmektedir.",
-  "Amaçlarının en başında müşteri talepleri doğrultusunda yeni projeler geliştirmek, rekabetçi fiyat ve yüksek kalite anlayışı ile AR-GE çalışmaları ile hayallerini hayata geçirmek yer almaktadır.",
-  "Yapmış olduğu Ar-Ge ve Ür-Ge çalışmaların sonucunda Kavin System Solutions marka ile mimari sistemler alanında faaliyetlerine devam etmiştir.",
-  "Bu anlayışla Kavin System Solutions, sadece ürün satışıyla yetinmemiş ve katma değer yaratacak yatırımları da gerçekleştirmiştir. Bugün, yüksek teknoloji ekipmanları ile donatmış üretim tesisleri ve uzman kadrosyla sektöründe ilklerin öncüsü olma vizyonu ile emin adımlarla yoluna devam etmektedir.",
+  "Müşteri talepleri doğrultusunda yeni projeler geliştirme, rekabetçi fiyat ve yüksek kalite anlayışı ile AR-GE çalışmaları ile hayallerini hayata geçirme our main goals.",
+  "Ar-Ge ve Ür-Ge çalışmalarının sonucunda Kavin System Solutions marka ile mimari sistemler alanında faaliyetlerine devam etmiştir.",
+  "Yüksek teknoloji ekipmanları ile donatmış üretim tesisleri ve uzman kadrosyla sektöründe ilklerin öncüsü olma vizyonu ile emin adımlarla yoluna devam etmektedir.",
 ];
 
 export const corporateAccordion: CorporateAccordionItem[] = [
   {
-    title: "18 Yıllık Deneyim",
-    body: "2006 yılında sektöre girildikten sonra, yüksek hacimli stok ve hızlı tedarik gücüyle bugün 49 ülkeye ihracat kapasitesine ulaştık; yılda ortalama %18 büyüme kaydediyor.",
+    title: "Kurumsal Değerlerimiz ve Yaklaşımımız",
+    body: "Müşteri odaklılık, kalite standartları, yenilikçi ve sürdürülebilir alüminyum çözümleri.",
+  },
+  {
+    title: "Üretim ve AR-GE Gücümüz",
+    body: "Yüksek teknolojiye sahip tesislerimiz, mühendislik yetkinliklerimiz ve katma değerli üretim süreçlerimiz.",
   },
   {
     title: "Vizyon & Misyon",

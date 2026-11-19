@@ -9,7 +9,7 @@ import type { Solution } from "@/lib/api/types";
 // Note: title dizi olarak gelir, her biri bir satırdır
 export default function Solutions({
   solutions,
-  showHeading,
+  showHeading = true,
   baseHref = "/cozumler",
   locale = "tr",
 }: {

@@ -451,43 +451,27 @@ export const projects = [
 
 export const corporateFacts = [
   { value: "18", label: "Years of experience" },
-  { value: "49", label: "Country export capacity" },
-  { value: "8,950", label: "Different customer and supplier" },
-  { value: "23K+", label: "Ton of product shipments" },
+  { value: "49", label: "Countries" },
+  { value: "8,950", label: "Customers and suppliers" },
+  { value: "23K+", label: "Ton in stock" },
 ];
 
 export const corporateTimeline = [
   {
     year: "2006",
-    text: "We were established in Çağlayan with 200 m². Kavin System Solutions began operating in the sector.",
-  },
-  {
-    year: "2007",
-    text: "We opened our paint workshop. Our store opening ceremony was held in Küçükyalı.",
+    text: "Established in Çağlayan with 200 m². Kavin System Solutions began operating in the sector.",
   },
   {
     year: "2010",
-    text: "We moved to our new 5,500 m² facility in Yenibosna. We started R&D studies for Kavin systems and invested in Izomat machinery.",
-  },
-  {
-    year: "2012",
-    text: "We attended our first fair to introduce the Kavin System Solutions brand.",
-  },
-  {
-    year: "2015",
-    text: "Kavin GmbH company was established. We started project management.",
-  },
-  {
-    year: "2017",
-    text: "We attended the BAU fair for the first time.",
+    text: "Moved to Yenibosna 5,500 m². Started R&D and invested in Izomat machinery.",
   },
   {
     year: "2022",
-    text: "We reached 49 country export capacity. We participated in over 25 fairs in Turkey and abroad.",
+    text: "Reached 49 country export capacity.",
   },
   {
     year: "2023",
-    text: "We invested in our 11,000 m² factory in Lüleburgaz.",
+    text: "Invested in our 11,000 m² factory in Lüleburgaz.",
   },
 ];
 
@@ -500,17 +484,21 @@ export const visionMission = {
 
 export const aboutText = [
   "Kavin System Solutions has reached its goal of being a leading partner in the sector by offering quality products and services that meet customer needs.",
-  "During this process, we have successfully implemented numerous projects and now have hundreds of new projects to execute.",
-  "With our high stock capacity and fast supply, we offer quality products and services while maintaining flexibility for diverse customer needs in the face of change and innovation.",
-  "Our main goals include developing new projects according to customer requirements, providing competitive pricing and high quality through R&D studies to turn dreams into reality.",
-  "As a result of our R&D and production studies, we established the Kavin System Solutions brand in the architectural systems sector.",
-  "With this understanding, Kavin System Solutions has gone beyond product sales and made strategic investments for value creation. Today, with our high-technology equipment and expert team, we continue our journey with the vision of being pioneers of innovation in the sector.",
+  "During this process we have successfully implemented numerous projects and now have 49 country export capacity.",
+  "With our high stock capacity and fast supply we offer quality products and services while maintaining flexibility for diverse customer needs in the face of change and innovation.",
+  "Our main goals include developing new projects according to customer requirements providing competitive pricing and high quality through R&D studies to turn dreams into reality.",
+  "As a result of our R&D and production studies we established the Kavin System Solutions brand in the architectural systems sector.",
+  "With this understanding Kavin System Solutions has gone beyond product sales and made strategic investments for value creation. Today with our high-technology equipment and expert team we continue our journey with the vision of being pioneers of innovation in the sector.",
 ];
 
 export const corporateAccordion = [
   {
-    title: "18 Years of Experience",
-    body: "Since entering the sector in 2006, we've reached 49 country export capacity with high stock levels and fast supply; recording 18% annual growth.",
+    title: "Corporate Values and Approach",
+    body: "Customer focus, quality standards, innovative and sustainable aluminium solutions.",
+  },
+  {
+    title: "Production and R&D Capability",
+    body: "Our facilities with high technology, engineering competencies, and value-added production processes.",
   },
   {
     title: "Vision & Mission",
